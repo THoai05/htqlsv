@@ -37,7 +37,7 @@
                 <select name="phonghoc_ID" id="phonghoc_ID" class="form-control" required>
                     <option value="">-- Chọn phòng học --</option>
                     @foreach($phonghocs as $phong)
-                        <option value="{{ $phong->id }}">{{ $phong->tenphonghoc }}</option>
+                        <option value="{{ $phong->phonghoc_ID }}">{{ $phong->tenphonghoc }}</option>
                     @endforeach
                 </select>
             </div>
