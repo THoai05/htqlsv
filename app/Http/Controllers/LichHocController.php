@@ -39,9 +39,9 @@ class LichHocController extends Controller
         // Validate dữ liệu
         $request->validate([
             'tenlop' => 'required|string|max:255',
-            'mamonhoc' => 'required|exists:monhocs,id',
-            'phonghoc_ID' => 'required|exists:phonghocs,id',
-            'giangvien_ID' => 'required|exists:giangviens,id',
+            'mamonhoc' => 'required|exists:mon_hocs,id',
+            'phonghoc_ID' => 'required|exists:phonghoc,phonghoc_ID',
+            'giangvien_ID' => 'required|exists:giang_viens,id',
             'soluongsv' => 'required|integer',
             'thoigianbatdau' => 'required|date',
             'thoigianketthuc' => 'required|date|after_or_equal:thoigianbatdau',
