@@ -19,7 +19,7 @@ class LichHocController extends Controller
             'lophocphans.giangvien'
         ])->get();
 
-        return view('lichhoc.index', compact('monhocs'));
+        return view('admin.lichhoc.index', compact('monhocs'));
     }
 
     // Hiển thị form tạo mới lớp học phần
@@ -30,7 +30,7 @@ class LichHocController extends Controller
         $phonghocs = PhongHoc::all();
         $giangviens = GiangVien::all();
 
-        return view('lichhoc.create', compact('monhocs', 'phonghocs', 'giangviens'));
+        return view('admin.lichhoc.create', compact('monhocs', 'phonghocs', 'giangviens'));
     }
 
     // Lưu lớp học phần mới
@@ -53,7 +53,7 @@ class LichHocController extends Controller
         // Sử dụng create() để lưu dữ liệu (Model phải có $fillable phù hợp)
         LopHocPhan::create($request->all());
 
-        return redirect()->route('lichhoc.index')->with('success', 'Thêm lớp học phần thành công!');
+        return redirect()->route('admin.lichhoc.index')->with('success', 'Thêm lớp học phần thành công!');
     }
 
     // Hiển thị form chỉnh sửa lớp học phần theo khóa chính lophoc_ID (được truyền thủ công)
@@ -65,7 +65,7 @@ class LichHocController extends Controller
         $phonghocs = PhongHoc::all();
         $giangviens = GiangVien::all();
 
-        return view('lichhoc.edit', compact('lophocphan', 'monhocs', 'phonghocs', 'giangviens'));
+        return view('admin.lichhoc.edit', compact('lophocphan', 'monhocs', 'phonghocs', 'giangviens'));
     }
 
     // Cập nhật lớp học phần theo lophoc_ID
@@ -88,7 +88,7 @@ class LichHocController extends Controller
 
         $lophocphan->update($request->all());
 
-        return redirect()->route('lichhoc.index')->with('success', 'Cập nhật lớp học phần thành công!');
+        return redirect()->route('admin.lichhoc.index')->with('success', 'Cập nhật lớp học phần thành công!');
     }
 
     // Xóa lớp học phần theo lophoc_ID
@@ -97,6 +97,6 @@ class LichHocController extends Controller
         $lophocphan = LopHocPhan::where('lophoc_ID', $lophoc_ID)->firstOrFail();
         $lophocphan->delete();
 
-        return redirect()->route('lichhoc.index')->with('success', 'Xóa lớp học phần thành công!');
+        return redirect()->route('admin.lichhoc.index')->with('success', 'Xóa lớp học phần thành công!');
     }
 }

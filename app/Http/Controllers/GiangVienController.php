@@ -11,13 +11,13 @@ class GiangVienController extends Controller
     public function index()
     {
         $giangViens = GiangVien::all();
-        return view('giangviens.index', compact('giangViens'));
+        return view('admin.giangviens.index', compact('giangViens'));
     }
 
     // Hiển thị form thêm giảng viên
     public function create()
     {
-        return view('giangviens.create');
+        return view('admin.giangviens.create');
     }
 
     // Xử lý thêm giảng viên
@@ -32,18 +32,17 @@ class GiangVienController extends Controller
         ]);
 
         GiangVien::create($request->all());
-        return redirect()->route('giangviens.index')->with('success', 'Thêm giảng viên thành công!');
+        return redirect()->route('admin.giangviens.index')->with('success', 'Thêm giảng viên thành công!');
     }
 
     // Hiển thị form sửa giảng viên
     public function edit($id)
     {
         $giangVien = GiangVien::findOrFail($id); // Lấy dữ liệu từ database
-        return view('giangviens.edit', compact('giangVien'));
-        dd($giangVien);
+        return view('admin.giangviens.edit', compact('giangVien'));
     }
-    
-    
+
+
 
 
     // Cập nhật thông tin giảng viên
@@ -57,9 +56,7 @@ class GiangVienController extends Controller
             'email' => $request->email, // Nếu muốn giữ nguyên, bỏ dòng này
             'so_dien_thoai' => $request->so_dien_thoai,
         ]);
-    
-        return redirect()->route('giangviens.index')->with('success', 'Cập nhật thông tin thành công!');
-    }
-    
 
+        return redirect()->route('admin.giangviens.index')->with('success', 'Cập nhật thông tin thành công!');
+    }
 }

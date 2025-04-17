@@ -12,13 +12,13 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('users.index', ['users' => $users]);
+        return view('admin.users.index', ['users' => $users]);
     }
 
     // Hiển thị form thêm user
     public function create()
     {
-        return view('users.create');
+        return view('admin.users.create');
     }
 
     // Xử lý thêm user
@@ -43,14 +43,14 @@ class UsersController extends Controller
     public function edit($user_ID)
     {
         $user = User::findOrFail($user_ID);
-        return view('users.edit', ['user' => $user]);
+        return view('admin.users.edit', ['user' => $user]);
     }
 
     // Xử lý cập nhật user
     public function update(Request $request, $user_ID)
     {
         $request->validate([
-           'username' => 'required|unique:users,username,' . $user_ID . ',user_ID',
+            'username' => 'required|unique:users,username,' . $user_ID . ',user_ID',
             'role' => 'required|in:admin,sinhvien,giangvien',
         ]);
 

@@ -1,20 +1,20 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container">
     <h2>Chỉnh sửa Môn Học</h2>
 
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
 
-    <form action="{{ route('monhocs.update', $monhoc->id) }}" method="POST">
+    <form action="{{ route('admin.monhocs.update', $monhoc->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -37,15 +37,15 @@
             <label class="form-label">Giảng viên</label>
             <select name="giang_vien_id" class="form-control" required>
                 @foreach($giangviens as $giangvien)
-                    <option value="{{ $giangvien->id }}" {{ $monhoc->giang_vien_id == $giangvien->id ? 'selected' : '' }}>
-                        {{ $giangvien->ho_ten }}
-                    </option>
+                <option value="{{ $giangvien->id }}" {{ $monhoc->giang_vien_id == $giangvien->id ? 'selected' : '' }}>
+                    {{ $giangvien->ho_ten }}
+                </option>
                 @endforeach
             </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Cập nhật</button>
-        <a href="{{ route('monhocs.index') }}" class="btn btn-secondary">Hủy</a>
+        <a href="{{ route('admin.monhocs.index') }}" class="btn btn-secondary">Hủy</a>
     </form>
 </div>
 @endsection

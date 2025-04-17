@@ -10,12 +10,12 @@ class SinhvienController extends Controller
     public function index()
     {
         $sinhviens = Sinhvien::all();
-        return view('sinhvien.index', compact('sinhviens'));
+        return view('admin.sinhvien.index', compact('sinhviens'));
     }
 
     public function create()
     {
-        return view('sinhvien.create');
+        return view('admin.sinhvien.create');
     }
 
     public function store(Request $request)
@@ -29,13 +29,13 @@ class SinhvienController extends Controller
 
         Sinhvien::create($request->all());
 
-        return redirect()->route('sinhvien.index')->with('success', 'Thêm sinh viên thành công!');
+        return redirect()->route('admin.sinhvien.index')->with('success', 'Thêm sinh viên thành công!');
     }
 
     public function edit($sinhvien_ID)
     {
         $sinhvien = Sinhvien::where('sinhvien_ID', $sinhvien_ID)->firstOrFail();
-        return view('sinhvien.edit', compact('sinhvien'));
+        return view('admin.sinhvien.edit', compact('sinhvien'));
     }
 
 
@@ -53,7 +53,7 @@ class SinhvienController extends Controller
 
         $sinhvien->update($request->all());
 
-        return redirect()->route('sinhvien.index')->with('success', 'Cập nhật sinh viên thành công!');
+        return redirect()->route('admin.sinhvien.index')->with('success', 'Cập nhật sinh viên thành công!');
     }
 
 
@@ -62,7 +62,6 @@ class SinhvienController extends Controller
         $sinhvien = Sinhvien::where('sinhvien_ID', $sinhvien_ID)->firstOrFail();
         $sinhvien->delete();
 
-        return redirect()->route('sinhvien.index')->with('success', 'Xóa sinh viên thành công!');
+        return redirect()->route('admin.sinhvien.index')->with('success', 'Xóa sinh viên thành công!');
     }
-
 }

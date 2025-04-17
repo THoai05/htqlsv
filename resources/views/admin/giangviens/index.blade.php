@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container">
@@ -11,7 +11,7 @@
     </div>
     @endif
 
-    <a href="{{ route('giangviens.create') }}" class="btn btn-success mb-3">Thêm Giảng Viên</a>
+    <a href="{{ route('admin.giangviens.create') }}" class="btn btn-success mb-3">Thêm Giảng Viên</a>
 
     <div class="table-responsive">
         <table class="table table-hover table-bordered shadow-sm rounded">
@@ -36,11 +36,11 @@
                     <td>{{ $gv->email }}</td>
                     <td>{{ $gv->so_dien_thoai }}</td>
                     <td>
-                        <a href="{{ route('giangviens.edit', ['giangvien' => $gv->id]) }}" class="btn btn-warning btn-sm">
+                        <a href="{{ route('admin.giangviens.edit', ['giangvien' => $gv->id]) }}" class="btn btn-warning btn-sm">
                             <i class="fas fa-pencil-alt"></i> Sửa
                         </a>
 
-                        <form action="{{ route('giangviens.destroy', $gv->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Bạn có chắc chắn muốn xóa?')">
+                        <form action="{{ route('admin.giangviens.destroy', $gv->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Bạn có chắc chắn muốn xóa?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">

@@ -1,20 +1,20 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container">
     <h2>Thêm Giảng Viên</h2>
 
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
 
-    <form action="{{ route('giangviens.store') }}" method="POST">
+    <form action="{{ route('admin.giangviens.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label class="form-label">Họ tên</label>
@@ -37,7 +37,7 @@
             <input type="text" name="so_dien_thoai" class="form-control" required>
         </div>
         <button type="submit" class="btn btn-success">Thêm</button>
-        <a href="{{ route('giangviens.index') }}" class="btn btn-secondary">Hủy</a>
+        <a href="{{ route('admin.giangviens.index') }}" class="btn btn-secondary">Hủy</a>
     </form>
 </div>
 @endsection

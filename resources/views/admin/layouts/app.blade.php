@@ -11,7 +11,11 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('sinhvien.index') }}">QLSV</a>
+            <a class="navbar-brand" href="{{ route('admin.sinhvien.index') }}">Quản Lý Sinh Viên</a>
+            <a class="navbar-brand" href="{{ route('admin.giangviens.index') }}">Quản Lý Giảng Viên</a>
+            <a class="navbar-brand" href="{{ route('admin.monhocs.index') }}">Quản Lý Môn Học</a>
+            <a class="navbar-brand" href="{{ route('admin.lichhoc.index') }}">Quản Lý Lịch Học</a>
+            <a class="navbar-brand" href="{{ route('admin.users.index') }}">Quản Lý Tài Khoản</a>
         </div>
     </nav>
 

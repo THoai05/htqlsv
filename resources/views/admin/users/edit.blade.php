@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container mt-5">
@@ -6,28 +6,28 @@
         <h2 class="text-center mb-4">Thêm User</h2>
 
         @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
         @endif
 
-        <form action="{{ route('users.store') }}" method="POST">
+        <form action="{{ route('admin.users.store') }}" method="POST">
             @csrf
-            
+
             <div class="mb-3">
                 <label class="form-label">Username:</label>
                 <input type="text" name="username" class="form-control" required>
             </div>
-            
+
             <div class="mb-3">
                 <label class="form-label">Password:</label>
                 <input type="password" name="password" class="form-control" required>
             </div>
-            
+
             <div class="mb-3">
                 <label class="form-label">Role:</label>
                 <select name="role" class="form-select" required>
@@ -39,9 +39,9 @@
 
             <button type="submit" class="btn btn-primary w-100">Thêm</button>
         </form>
-        
+
         <div class="text-center mt-3">
-            <a href="{{ route('users.index') }}" class="btn btn-secondary">Quay lại</a>
+            <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Quay lại</a>
         </div>
     </div>
 </div>
