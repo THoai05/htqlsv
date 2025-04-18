@@ -3,11 +3,11 @@
 @section('content')
 <div class="container mt-5">
     <div class="card shadow-lg p-4">
-        <h2 class="text-center mb-4">Thêm User</h2>
+        <h2 class="text-center mb-4">Chỉnh sửa User</h2>
 
         @if ($errors->any())
         <div class="alert alert-danger">
-            <ul>
+            <ul class="mb-0">
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
                 @endforeach
@@ -15,29 +15,30 @@
         </div>
         @endif
 
-        <form action="{{ route('admin.users.store') }}" method="POST">
+        <form action="{{ route('admin.users.update', $user->user_ID) }}" method="POST">
             @csrf
+            @method('PUT')
 
             <div class="mb-3">
                 <label class="form-label">Username:</label>
-                <input type="text" name="username" class="form-control" required>
+                <input type="text" name="username" value="{{ old('username', $user->username) }}" class="form-control" required>
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Password:</label>
-                <input type="password" name="password" class="form-control" required>
+                <label class="form-label">Mật khẩu mới (nếu muốn thay đổi):</label>
+                <input type="password" name="password" class="form-control" placeholder="Để trống nếu không đổi">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Role:</label>
                 <select name="role" class="form-select" required>
-                    <option value="admin">Admin</option>
-                    <option value="sinhvien">Sinh viên</option>
-                    <option value="giangvien">Giảng viên</option>
+                    <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
+                    <option value="sinhvien" {{ $user->role === 'sinhvien' ? 'selected' : '' }}>Sinh viên</option>
+                    <option value="giangvien" {{ $user->role === 'giangvien' ? 'selected' : '' }}>Giảng viên</option>
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Thêm</button>
+            <button type="submit" class="btn btn-success w-100">Cập nhật</button>
         </form>
 
         <div class="text-center mt-3">

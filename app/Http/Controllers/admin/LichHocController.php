@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\MonHoc;
 use App\Models\PhongHoc;
 use App\Models\GiangVien;
 use App\Models\LopHocPhan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class LichHocController extends Controller
 {

@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 // Import controller ở đầu file
-use App\Http\Controllers\SinhvienController;
-use App\Http\Controllers\GiangVienController;
-use App\Http\Controllers\MonHocController;
-use App\Http\Controllers\LichHocController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Admin\SinhvienController;
+use App\Http\Controllers\Admin\GiangVienController;
+use App\Http\Controllers\Admin\MonHocController;
+use App\Http\Controllers\Admin\LichHocController;
+use App\Http\Controllers\Admin\UsersController;
+
 
 // Trang welcome
 Route::get('/', function () {
@@ -41,4 +42,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('users/{user}/edit', [UsersController::class, 'edit'])->name('users.edit');
     Route::put('users/{user}', [UsersController::class, 'update'])->name('users.update');
     Route::delete('users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
+});
+
+use App\Http\Controllers\Auth\LoginController;
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::middleware(['auth'])->group(function () {
+    // các route cần đăng nhập
+});
+
+
+// Group các route thuộc khu vực lecturer
+Route::prefix('lecturer')->middleware(['auth:giangvien'])->group(function () {
+    Route::resource('monhoc', App\Http\Controllers\Lecturer\MonHocController::class);
 });

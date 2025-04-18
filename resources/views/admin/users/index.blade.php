@@ -17,7 +17,7 @@
             <tr>
                 <th>ID</th>
                 <th>Họ tên</th>
-                <th>Email</th>
+                <th>password</th>
                 <th>Vai trò</th>
                 <th>Hành động</th>
             </tr>

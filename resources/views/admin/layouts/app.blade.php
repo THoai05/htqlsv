@@ -16,6 +16,12 @@
             <a class="navbar-brand" href="{{ route('admin.monhocs.index') }}">Quản Lý Môn Học</a>
             <a class="navbar-brand" href="{{ route('admin.lichhoc.index') }}">Quản Lý Lịch Học</a>
             <a class="navbar-brand" href="{{ route('admin.users.index') }}">Quản Lý Tài Khoản</a>
+
+            <!-- Thêm nút logout -->
+            <form action="{{ route('logout') }}" method="POST" class="d-inline-block">
+                @csrf
+                <button type="submit" class="btn btn-outline-danger navbar-btn">Đăng xuất</button>
+            </form>
         </div>
     </nav>
 

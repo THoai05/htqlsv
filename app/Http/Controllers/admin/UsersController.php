@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
@@ -36,7 +37,7 @@ class UsersController extends Controller
         $user->role = $request->role;
         $user->save();
 
-        return redirect('/users')->with('success', 'User đã được thêm thành công!');
+        return redirect()->route('admin.users.index')->with('success', 'User đã được thêm thành công!');
     }
 
     // Hiển thị form sửa user
@@ -52,14 +53,21 @@ class UsersController extends Controller
         $request->validate([
             'username' => 'required|unique:users,username,' . $user_ID . ',user_ID',
             'role' => 'required|in:admin,sinhvien,giangvien',
+            'password' => 'nullable|min:6', // Chỉ kiểm tra mật khẩu nếu có thay đổi
         ]);
 
         $user = User::findOrFail($user_ID);
         $user->username = $request->username;
         $user->role = $request->role;
+
+        // Kiểm tra nếu mật khẩu mới có được nhập vào không
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
         $user->save();
 
-        return redirect('/users')->with('success', 'User đã được cập nhật!');
+        return redirect()->route('admin.users.index')->with('success', 'User đã được cập nhật!');
     }
 
     // Xử lý xóa user
@@ -67,6 +75,6 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($user_ID);
         $user->delete();
-        return redirect('/users')->with('success', 'User đã bị xóa!');
+        return redirect()->route('admin.users.index')->with('success', 'User đã bị xóa!');
     }
 }
