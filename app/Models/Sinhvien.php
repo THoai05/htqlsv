@@ -18,6 +18,17 @@ class Sinhvien extends Model
     protected $keyType = 'int'; // Đảm bảo khóa chính là số nguyên
 
     protected $fillable = ['hoten', 'mssv', 'email', 'sdt'];
+
+    public function lophocphans()
+    {
+        return $this->belongsToMany(LopHocPhan::class, 'lop_sinhvien', 'sinhvien_ID', 'lophoc_ID');
+    }
+
+    public function diem()
+    {
+        return $this->hasOne(Diem::class, 'sinhvien_ID', 'sinhvien_ID');
+    }
+
 }
 
 

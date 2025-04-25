@@ -8,6 +8,9 @@ use App\Http\Controllers\GiangVienController;
 use App\Http\Controllers\MonHocController;
 use App\Http\Controllers\LichHocController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\LopHocPhanController;
+use App\Http\Controllers\DiemController;
+
 
 // Trang welcome
 Route::get('/', function () {
@@ -42,3 +45,24 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('users/{user}', [UsersController::class, 'update'])->name('users.update');
     Route::delete('users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
 });
+
+
+
+
+//Route cho chuc nang xem danh sach sinh vien ----hau
+
+Route::prefix('lecturer')->name('lecturer.')->group(function () {
+    Route::get('/lophocphan', [LopHocPhanController::class, 'index'])->name('lophocphan.index');
+    Route::get('/lophocphan/{lophoc_ID}/sinhvien', [LopHocPhanController::class, 'showSinhVien'])->name('lophocphan.sinhvien');
+});
+
+
+
+Route::prefix('lecturer')->name('lecturer.')->group(function () {
+    // Route xem điểm của sinh viên
+    Route::get('diem/{lophoc_ID}/{sinhvien_ID}', [DiemController::class, 'showDiem'])->name('diem.show');
+
+    // Route lưu điểm (thêm hoặc cập nhật)
+    Route::post('diem/{lophoc_ID}/{sinhvien_ID}', [DiemController::class, 'saveDiem'])->name('diem.save');
+});
+

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\GiangVien;
+use App\Models\LopHocPhan;
+use App\Models\Diem;
+use App\Models\SinhVien;
 
 class GiangVienController extends Controller
 {
@@ -59,4 +62,21 @@ class GiangVienController extends Controller
 
         return redirect()->route('admin.giangviens.index')->with('success', 'Cập nhật thông tin thành công!');
     }
+
+    public function showDiem($lophoc_id, $sinhvien_id)
+    {
+        // Lấy thông tin lớp học phần và sinh viên
+        $lophocphan = LopHocPhan::find($lophoc_id);
+        $sinhvien = SinhVien::find($sinhvien_id);
+
+        // Lấy điểm của sinh viên trong lớp học phần này
+        $diem = Diem::where('lophoc_ID', $lophoc_id)
+            ->where('sinhvien_ID', $sinhvien_id)
+            ->first();
+
+        return view('lecturer.sinhvien_diem', compact('lophocphan', 'sinhvien', 'diem'));
+    }
+
+
+
 }

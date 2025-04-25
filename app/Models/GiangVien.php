@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
 
 class GiangVien extends Model
 {
@@ -29,7 +30,11 @@ class GiangVien extends Model
 
     public function lophocphans()
     {
-        return $this->hasMany(LopHocPhan::class, 'giangvien_ID', 'id');
+        return $this->hasMany(LopHocPhan::class, 'giangvien_ID'); // 'giangvien_id' là khóa ngoại trong bảng lop_hoc_phan
     }
+
+
+
+
 }
 
