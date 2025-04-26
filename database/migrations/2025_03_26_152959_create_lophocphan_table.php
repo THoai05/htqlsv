@@ -26,10 +26,6 @@ return new class extends Migration {
 
             $table->timestamps();
 
-            // Định nghĩa khóa ngoại
-            $table->foreign('mamonhoc')->references('id')->on('mon_hocs')->onDelete('cascade');
-            $table->foreign('phonghoc_ID')->references('phonghoc_ID')->on('phonghoc')->onDelete('cascade');
-            $table->foreign('giangvien_ID')->references('id')->on('giang_viens')->onDelete('cascade');
         });
     }
 

@@ -19,7 +19,8 @@ class GiangVien extends Model
         'ma_giang_vien',
         'khoa',
         'email',
-        'so_dien_thoai'
+        'so_dien_thoai',
+        'user_id'
     ];
 
     public function monhocs()
@@ -30,6 +31,11 @@ class GiangVien extends Model
     public function lophocphans()
     {
         return $this->hasMany(LopHocPhan::class, 'giangvien_ID', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
 
