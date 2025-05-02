@@ -30,9 +30,8 @@ class LoginController extends Controller
             }
 
             if ($user->role === 'giangvien') {
-                return redirect()->route('lecturer.monhoc.indie');
+                return redirect()->route('lecturer.monhoc.index');
             }
-
         }
 
         // Nếu thông tin đăng nhập không đúng

@@ -54,11 +54,11 @@ Route::middleware('web')->group(function () {
 });
 
 
-Route::prefix('lecturer')
-    ->name('lecturer.')
-    ->middleware(['auth'])
-    ->group(function () {
-        // dd(Auth::check());
-        Route::get('/test', [MonHocsController::class, 'index'])->name('monhoc.indie');
-    });
-
+Route::prefix('lecturer')->name('lecturer.')->group(function () {
+    Route::get('/monhoc', [MonHocsController::class, 'index'])->name('monhoc.index');
+    Route::get('/monhoc/create', [MonHocsController::class, 'create'])->name('monhoc.create');
+    Route::post('/monhoc', [MonHocsController::class, 'store'])->name('monhoc.store');
+    Route::get('/monhoc/{id}/edit', [MonHocsController::class, 'edit'])->name('monhoc.edit');
+    Route::put('/monhoc/{id}', [MonHocsController::class, 'update'])->name('monhoc.update');
+    Route::delete('/monhoc/{id}', [MonHocsController::class, 'destroy'])->name('monhoc.destroy');
+});

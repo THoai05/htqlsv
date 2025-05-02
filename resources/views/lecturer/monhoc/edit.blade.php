@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h2>Cập Nhật Môn Học</h2>
-    <form action="{{ route('monhoc.update', $monhoc->id) }}" method="POST">
+    <form action="{{ route('lecturer.monhoc.update', $monhoc->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -28,7 +28,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Cập nhật</button>
-        <a href="{{ route('monhoc.index') }}" class="btn btn-secondary">Quay lại</a>
+        <a href="{{ route('lecturer.monhoc.index') }}" class="btn btn-secondary">Quay lại</a>
     </form>
 </div>
 @endsection

@@ -11,8 +11,11 @@ class MonHocsController extends Controller
 {
     public function index()
     {
-        // $monhocs = MonHoc::where('giang_vien_id', Auth::id())->get();
-        return view('lecturer.logintest');
+        // Lấy danh sách môn học từ cơ sở dữ liệu
+        $monhocs = MonHoc::all(); // Hoặc có thể thay bằng MonHoc::where('giangvien_id', Auth::id())->get() nếu bạn muốn chỉ lấy các môn học của giảng viên hiện tại.
+
+        // Trả lại view với biến monhocs
+        return view('lecturer.monhoc.index', compact('monhocs'));
     }
 
     public function create()
