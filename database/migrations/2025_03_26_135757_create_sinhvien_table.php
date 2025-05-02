@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->string('mssv', 50)->unique();  // Giới hạn độ dài
             $table->string('email', 100)->unique();
             $table->string('sdt', 15)->unique();
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

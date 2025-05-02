@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\MonHoc;
 use Illuminate\Support\Facades\Auth;
 
-class MonHocController extends Controller
+class MonHocsController extends Controller
 {
     public function index()
     {
-        $monhocs = MonHoc::where('giang_vien_id', Auth::id())->get();
-        return view('lecturer.monhoc.index', compact('monhocs'));
+        // $monhocs = MonHoc::where('giang_vien_id', Auth::id())->get();
+        return view('lecturer.logintest');
     }
 
     public function create()

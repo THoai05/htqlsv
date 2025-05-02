@@ -30,4 +30,10 @@ class User extends Authenticatable
     {
         return 'username';
     }
+
+    public function giangvien()
+    {
+        return $this->hasOne(GiangVien::class, 'user_id', 'user_ID');
+    }
+
 }

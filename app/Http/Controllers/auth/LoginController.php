@@ -2,54 +2,46 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    // Hiển thị form đăng nhập
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    // Xử lý đăng nhập
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'username' => 'required|string',
-            'password' => 'required|string',
-        ]);
+        // Lấy dữ liệu từ request
+        $credentials = $request->only('username', 'password');
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        // Kiểm tra nếu người dùng nhập đúng thông tin đăng nhập
+        if (Auth::attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
+            $user = Auth::user();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            // dd($user);  // Kiểm tra thông tin user
 
-            // Điều hướng theo role
-            $role = Auth::user()->role;
-            if ($role === 'admin') {
+            if ($user->role === 'admin') {
                 return redirect()->route('admin.users.index');
-            } elseif ($role === 'giangvien') {
-                return redirect('/lecturer'); // Cập nhật route đúng của bạn
-            } elseif ($role === 'sinhvien') {
-                return redirect('/student'); // Tùy theo route sinh viên
             }
 
-            return redirect('/'); // fallback
+            if ($user->role === 'giangvien') {
+                return redirect()->route('lecturer.monhoc.indie');
+            }
+
         }
 
-        return back()->withErrors([
-            'username' => 'Sai tài khoản hoặc mật khẩu.',
-        ]);
+        // Nếu thông tin đăng nhập không đúng
+        return redirect()->back()->withErrors(['username' => 'Thông tin đăng nhập không đúng.']);
     }
 
-    // Đăng xuất
     public function logout(Request $request)
     {
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('/login');
+        return redirect()->route('login');
     }
 }
