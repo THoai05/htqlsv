@@ -1,38 +1,28 @@
 <?php
+
 namespace Database\Seeders;
-use Illuminate\Database\Seeder as BaseSeeber;
+
+use Illuminate\Database\Seeder;
+use App\Models\GiangVien;
+use Faker\Factory as Faker;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
-class GiangVienSeeder extends BaseSeeber
+class GiangVienSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        // Xóa tất cả dữ liệu cũ
+        $faker = Faker::create();
         DB::table('giang_viens')->truncate();
-
-        // Chèn dữ liệu mới
-        DB::table('giang_viens')->insert([
-            [
-                'ho_ten' => 'Nguyễn Văn A',
-                'ma_giang_vien' => 'GV001',
-                'khoa' => 'Công nghệ thông tin',
-                'email' => 'nguyenvana@example.com',
-                'so_dien_thoai' => '0123456789',
-                'user_id' => '2',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'ho_ten' => 'Trần Thị B',
-                'ma_giang_vien' => 'GV002',
-                'khoa' => 'Khoa học máy tính',
-                'email' => 'tranthib@example.com',
-                'so_dien_thoai' => '0987654321',
-                'user_id' => '3',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-        ]);
+        // Gán user_id từ 3 đến 10
+        foreach (range(3, 12) as $userId) {
+            GiangVien::create([
+                'ho_ten' => $faker->name,
+                'ma_giang_vien' => 'GV' . str_pad($userId, 4, '0', STR_PAD_LEFT),
+                'khoa' => $faker->randomElement(['CNTT', 'QTKD', 'Ngoại ngữ', 'Toán']),
+                'email' => $faker->unique()->safeEmail,
+                'so_dien_thoai' => $faker->numerify('09########'),
+                'user_id' => $userId,
+            ]);
+        }
     }
 }

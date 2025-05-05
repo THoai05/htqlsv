@@ -3,35 +3,50 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 
 class UserSeeder extends Seeder
 {
     public function run()
     {
-        // Tạo 1 tài khoản admin
-        User::create([
-            'username' => 'admin',
-            'password' => Hash::make('admin123'),
-            'role' => 'admin',
-        ]);
+        $faker = Faker::create();
 
-        // Tạo 10 tài khoản giảng viên
-        for ($i = 1; $i <= 10; $i++) {
-            User::create([
-                'username' => 'giangvien' . $i,
-                'password' => Hash::make('password123'),
-                'role' => 'giangvien',
+        // Xóa dữ liệu cũ (nếu cần)
+        DB::table('users')->truncate();
+
+        // 1. Tạo 2 admin
+        for ($i = 1; $i <= 2; $i++) {
+            DB::table('users')->insert([
+                'username' => 'admin0' . $i,
+                'password' => Hash::make('123456'), // mật khẩu mặc định
+                'role' => 'admin',
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
 
-        // Tạo 20 tài khoản sinh viên
-        for ($i = 1; $i <= 20; $i++) {
-            User::create([
+        // 2. Tạo 10 giảng viên
+        for ($i = 1; $i <= 10; $i++) {
+            DB::table('users')->insert([
+                'username' => 'giangvien' . $i,
+                'password' => Hash::make('123456'),
+                'role' => 'giangvien',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+
+        // 3. Tạo 88 sinh viên
+        for ($i = 1; $i <= 88; $i++) {
+            DB::table('users')->insert([
                 'username' => 'sinhvien' . $i,
-                'password' => Hash::make('password123'),
+                'password' => Hash::make('123456'),
                 'role' => 'sinhvien',
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
     }
