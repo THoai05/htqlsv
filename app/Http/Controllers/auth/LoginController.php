@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -15,16 +15,14 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // Lấy dữ liệu từ request
+        // Lấy thông tin đăng nhập từ request
         $credentials = $request->only('username', 'password');
 
-        // Kiểm tra nếu người dùng nhập đúng thông tin đăng nhập
-        if (Auth::attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
-            $user = Auth::user();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-            // dd($user);  // Kiểm tra thông tin user
+        if (Auth::attempt($credentials)) {
+            // Lưu thông tin người dùng vào session
+            session(['user_id' => Auth::id()]);
 
+            $user = Auth::user();
             if ($user->role === 'admin') {
                 return redirect()->route('admin.users.index');
             }
@@ -34,9 +32,9 @@ class LoginController extends Controller
             }
         }
 
-        // Nếu thông tin đăng nhập không đúng
         return redirect()->back()->withErrors(['username' => 'Thông tin đăng nhập không đúng.']);
     }
+
 
     public function logout(Request $request)
     {

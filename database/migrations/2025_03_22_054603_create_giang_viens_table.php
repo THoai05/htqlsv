@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,8 +15,11 @@ return new class extends Migration {
             $table->string('khoa');
             $table->string('email')->unique();
             $table->string('so_dien_thoai');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');  // Đảm bảo dùng unsignedBigInteger
             $table->timestamps();
+
+            // Thêm khóa ngoại tham chiếu đến bảng 'users'
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

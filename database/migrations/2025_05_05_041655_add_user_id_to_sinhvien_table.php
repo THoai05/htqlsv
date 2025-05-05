@@ -9,15 +9,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::table('sinhvien', function (Illuminate\Database\Schema\Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->after('sdt')->nullable();
-
-            // Thêm liên kết với bảng users nếu muốn
-            $table->foreign('user_id')->references('user_ID')->on('users')->onDelete('cascade');
-        });
+        // Kiểm tra nếu cột 'user_id' chưa tồn tại mới thêm
+        if (!Schema::hasColumn('sinhvien', 'user_id')) {
+            Schema::table('sinhvien', function (Blueprint $table) {
+                $table->unsignedBigInteger('user_id')->nullable()->after('sdt');
+            });
+        }
     }
+
 
 
     /**
