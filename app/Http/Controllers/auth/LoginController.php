@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+// use \Illuminate\Validation;
 
 class LoginController extends Controller
 {
@@ -15,27 +19,25 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // Lấy dữ liệu từ request
-        $credentials = $request->only('username', 'password');
-
-        // Kiểm tra nếu người dùng nhập đúng thông tin đăng nhập
-        if (Auth::attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
+        $validated = $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string',
+        ]);
+        if (Auth::attempt($validated)) {
+            $request->session()->regenerate();
+            Auth::login(Auth::user());
             $user = Auth::user();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-            // dd($user);  // Kiểm tra thông tin user
-
             if ($user->role === 'admin') {
                 return redirect()->route('admin.users.index');
             }
-
             if ($user->role === 'giangvien') {
-                return redirect()->route('lecturer.monhoc.index');
+                return redirect()->route('lecturer.lophocphan.index');
             }
         }
+        throw \Illuminate\Validation\ValidationException::withMessages([
+            'credentials' => 'Nhap sai du lieu'
+        ]);
 
-        // Nếu thông tin đăng nhập không đúng
-        return redirect()->back()->withErrors(['username' => 'Thông tin đăng nhập không đúng.']);
     }
 
     public function logout(Request $request)

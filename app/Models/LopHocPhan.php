@@ -41,4 +41,13 @@ class LopHocPhan extends Model
     {
         return $this->belongsTo(GiangVien::class, 'giangvien_ID', 'id'); // giangvien_ID tham chiếu tới id của bảng giangviens
     }
+    public function sinhviens()
+    {
+        return $this->belongsToMany(SinhVien::class, 'lop_sinhvien', 'lophoc_ID', 'sinhvien_ID');
+    }
+
+    public function diem()
+    {
+        return $this->hasMany(Diem::class, 'lophoc_ID', 'lophoc_ID');
+    }
 }

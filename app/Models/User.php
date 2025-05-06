@@ -25,11 +25,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
-    // để dùng username thay vì email làm định dạng đăng nhập
-    public function getAuthIdentifierName()
-    {
-        return 'username';
-    }
 
     public function giangvien()
     {
