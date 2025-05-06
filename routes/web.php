@@ -3,13 +3,15 @@
 use Illuminate\Support\Facades\Route;
 
 // Import controller ở đầu file
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\MonHocController;
+use App\Http\Controllers\Admin\LichHocController;
+use App\Http\Controllers\Lecturer\DiemController;
 use App\Http\Controllers\Admin\SinhvienController;
 use App\Http\Controllers\Admin\GiangVienController;
-use App\Http\Controllers\Admin\MonHocController;
 use App\Http\Controllers\Lecturer\MonHocsController;
-use App\Http\Controllers\Admin\LichHocController;
-use App\Http\Controllers\Admin\UsersController;
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Lecturer\LopHocPhanController;
 
 
 // Trang welcome
@@ -54,11 +56,19 @@ Route::middleware('web')->group(function () {
 });
 
 
-Route::prefix('lecturer')->name('lecturer.')->group(function () {
+Route::prefix('lecturer')->name('lecturer.')->middleware(['web', 'auth'])->group(function () {
     Route::get('/monhoc', [MonHocsController::class, 'index'])->name('monhoc.index');
     Route::get('/monhoc/create', [MonHocsController::class, 'create'])->name('monhoc.create');
     Route::post('/monhoc', [MonHocsController::class, 'store'])->name('monhoc.store');
     Route::get('/monhoc/{id}/edit', [MonHocsController::class, 'edit'])->name('monhoc.edit');
     Route::put('/monhoc/{id}', [MonHocsController::class, 'update'])->name('monhoc.update');
     Route::delete('/monhoc/{id}', [MonHocsController::class, 'destroy'])->name('monhoc.destroy');
+    Route::get('diem/{lophoc_ID}/{sinhvien_ID}', [DiemController::class, 'showDiem'])->name('diem.show');
+
+    // Route lưu điểm (thêm hoặc cập nhật)
+    Route::post('diem/{lophoc_ID}/{sinhvien_ID}', [DiemController::class, 'saveDiem'])->name('diem.save');
+
+    Route::get('/lophocphan', [LopHocPhanController::class, 'index'])->name('lophocphan.index');
+    Route::get('/lophocphan/{lophoc_ID}/sinhvien', [LopHocPhanController::class, 'showSinhVien'])->name('lophocphan.sinhvien');
 });
+
