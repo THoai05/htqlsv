@@ -8,6 +8,8 @@
                 class="btn btn-outline-primary btn-sm rounded-pill shadow-sm m-lg-3">
                 <i class="fas fa-user me-1"></i> Chi tiết thông tin
             </a>
+
+
             <thead>
                 <tr>
                     <th>Tên lớp học phần</th>
@@ -17,6 +19,7 @@
                     <th>Ngày học</th>
                     <th>Tiết bắt đầu</th>
                     <th>Tiết kết thúc</th>
+                    <th>Xem điểm</th>
 
                 </tr>
             </thead>
@@ -30,6 +33,12 @@
                         <td>{{ $lop->ngayhoc }}</td>
                         <td>{{ $lop->tietbatdau }}</td>
                         <td>{{ $lop->tietketthuc }}</td>
+                        <td>
+                            <a
+                                href="{{ route('student.diem.show', ['lophoc_ID' => $lop->lophoc_ID, 'sinhvien_ID' => $sinhvien->sinhvien_ID]) }}">
+                                Xem Điểm
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
