@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 // Import controller ở đầu file
+use App\Http\Controllers\Lecturer\DiemDanhController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\MonHocController;
@@ -71,4 +72,7 @@ Route::prefix('lecturer')->name('lecturer.')->middleware(['web', 'auth'])->group
     Route::get('/lophocphan', [LopHocPhanController::class, 'index'])->name('lophocphan.index');
     Route::get('/lophocphan/{lophoc_ID}/sinhvien', [LopHocPhanController::class, 'showSinhVien'])->name('lophocphan.sinhvien');
     Route::get('/lophocphan/{lophoc_ID}/baocao', [DiemController::class, 'showDiemSinhVien'])->name('diem.baocao');
+    Route::get('/lophocphan/{lophoc_ID}/diemdanh', [DiemDanhController::class, 'index'])->name('diemdanh.index');
+    Route::post('/lophocphan/{lophoc_ID}/diemdanh', [DiemDanhController::class, 'store'])->name('diemdanh.store');
+
 });
