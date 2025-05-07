@@ -13,6 +13,13 @@ return new class extends Migration {
             $table->string('mssv', 50)->unique();  // Giới hạn độ dài
             $table->string('email', 100)->unique();
             $table->string('sdt', 50)->unique();
+            $table->string('cccd', 20)->unique(); // Số căn cước công dân
+            $table->date('ngaysinh'); // Ngày sinh
+            $table->enum('gioitinh', ['Nam', 'Nữ']); // Giới tính
+            $table->enum('dantoc', ['Kinh', 'Khác'])->default('Kinh'); // Dân tộc
+            $table->enum('tongiao', ['Có', 'Không'])->default('Không'); // Tôn giáo
+            $table->string('noisinh'); // Nơi sinh
+            $table->string('tinhtrang')->default('Còn học'); // Tình trạng
             $table->integer('user_id');
             $table->timestamps();
         });
