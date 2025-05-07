@@ -13,7 +13,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Z0caVssERtLGJyQD',
+            '_route' => 'generated::CK8oV3ncZTtIzXPo',
           ),
           1 => NULL,
           2 => 
@@ -33,7 +33,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::erSlX8Fg0AjaQpfb',
+            '_route' => 'generated::GW269xXBEaAQHgIE',
           ),
           1 => NULL,
           2 => 
@@ -458,10 +458,30 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/student/student/lophocphan' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'student.lophocphan.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
     ),
     2 => 
     array (
-      0 => '{^(?|/admin/(?|sinhvien/([^/]++)(?|(*:37)|/edit(*:49)|(*:56))|giangviens/([^/]++)(?|(*:86)|/edit(*:98)|(*:105))|monhocs/([^/]++)(?|(*:133)|/edit(*:146)|(*:154))|lichhoc/([^/]++)(?|/edit(*:187)|(*:195))|users/([^/]++)(?|/edit(*:226)|(*:234)))|/lecturer/(?|monhoc/([^/]++)(?|/edit(*:280)|(*:288))|diem/([^/]++)/([^/]++)(?|(*:322))|lophocphan/([^/]++)/(?|sinhvien(*:362)|baocao(*:376)|diemdanh(?|(*:395))))|/storage/(.*)(*:419))/?$}sDu',
+      0 => '{^(?|/admin/(?|sinhvien/([^/]++)(?|(*:37)|/edit(*:49)|(*:56))|giangviens/([^/]++)(?|(*:86)|/edit(*:98)|(*:105))|monhocs/([^/]++)(?|(*:133)|/edit(*:146)|(*:154))|lichhoc/([^/]++)(?|/edit(*:187)|(*:195))|users/([^/]++)(?|/edit(*:226)|(*:234)))|/lecturer/(?|monhoc/([^/]++)(?|/edit(*:280)|(*:288))|diem/([^/]++)/([^/]++)(?|(*:322))|lophocphan/([^/]++)/(?|sinhvien(*:362)|baocao(*:376)|diemdanh(?|(*:395))))|/st(?|udent/student/([^/]++)/chitietthongtin(*:450)|orage/(.*)(*:468)))/?$}sDu',
     ),
     3 => 
     array (
@@ -1053,7 +1073,30 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      419 => 
+      450 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'student.chitietthongtin',
+          ),
+          1 => 
+          array (
+            0 => 'sinhvien_ID',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      468 => 
       array (
         0 => 
         array (
@@ -1091,7 +1134,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::Z0caVssERtLGJyQD' => 
+    'generated::CK8oV3ncZTtIzXPo' => 
     array (
       'methods' => 
       array (
@@ -1120,7 +1163,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000004b20000000000000000";}}',
-        'as' => 'generated::Z0caVssERtLGJyQD',
+        'as' => 'generated::CK8oV3ncZTtIzXPo',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1136,7 +1179,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::erSlX8Fg0AjaQpfb' => 
+    'generated::GW269xXBEaAQHgIE' => 
     array (
       'methods' => 
       array (
@@ -1158,7 +1201,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::erSlX8Fg0AjaQpfb',
+        'as' => 'generated::GW269xXBEaAQHgIE',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2979,6 +3022,84 @@ app('router')->setCompiledRoutes(
         'as' => 'lecturer.diemdanh.store',
         'namespace' => NULL,
         'prefix' => '/lecturer',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'student.lophocphan.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'student/student/lophocphan',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Student\\StudentController@index',
+        'controller' => 'App\\Http\\Controllers\\Student\\StudentController@index',
+        'as' => 'student.lophocphan.index',
+        'namespace' => NULL,
+        'prefix' => '/student',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'student.chitietthongtin' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'student/student/{sinhvien_ID}/chitietthongtin',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Student\\StudentController@chiTietThongTin',
+        'controller' => 'App\\Http\\Controllers\\Student\\StudentController@chiTietThongTin',
+        'as' => 'student.chitietthongtin',
+        'namespace' => NULL,
+        'prefix' => '/student',
         'where' => 
         array (
         ),

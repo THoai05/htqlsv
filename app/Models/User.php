@@ -31,4 +31,9 @@ class User extends Authenticatable
         return $this->hasOne(GiangVien::class, 'user_id', 'user_ID');
     }
 
+    public function sinhvien()
+    {
+        return $this->hasOne(Sinhvien::class, 'user_id', 'user_ID');
+    }
+
 }

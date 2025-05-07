@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 // Import controller ở đầu file
-use App\Http\Controllers\Lecturer\DiemDanhController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\MonHocController;
@@ -11,7 +10,9 @@ use App\Http\Controllers\Admin\LichHocController;
 use App\Http\Controllers\Lecturer\DiemController;
 use App\Http\Controllers\Admin\SinhvienController;
 use App\Http\Controllers\Admin\GiangVienController;
+use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Lecturer\MonHocsController;
+use App\Http\Controllers\Lecturer\DiemDanhController;
 use App\Http\Controllers\Lecturer\LopHocPhanController;
 
 
@@ -75,4 +76,12 @@ Route::prefix('lecturer')->name('lecturer.')->middleware(['web', 'auth'])->group
     Route::get('/lophocphan/{lophoc_ID}/diemdanh', [DiemDanhController::class, 'index'])->name('diemdanh.index');
     Route::post('/lophocphan/{lophoc_ID}/diemdanh', [DiemDanhController::class, 'store'])->name('diemdanh.store');
 
+});
+
+
+
+//route cho sinh vien
+Route::prefix('student')->name('student.')->middleware(['web', 'auth'])->group(function () {
+    Route::get('student/lophocphan', [StudentController::class, 'index'])->name('lophocphan.index');
+    Route::get('student/{sinhvien_ID}/chitietthongtin', [StudentController::class, 'chiTietThongTin'])->name('chitietthongtin');
 });
