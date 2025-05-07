@@ -12,12 +12,17 @@ return new class extends Migration {
     {
         Schema::create('diem', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('sinhvien_ID');  // Đảm bảo là unsignedBigInteger
-            $table->unsignedBigInteger('lophoc_ID'); // Đảm bảo là unsignedBigInteger
-            $table->decimal('diem', 5, 2);  // Điểm (với 2 chữ số thập phân)
-            $table->timestamps();
+            $table->unsignedBigInteger('sinhvien_ID');
+            $table->unsignedBigInteger('lophoc_ID');
 
-            // Thêm ràng buộc khóa ngoại
+            $table->decimal('diem_15p_1', 5, 2)->nullable();
+            $table->decimal('diem_15p_2', 5, 2)->nullable();
+            $table->decimal('diem_15p_3', 5, 2)->nullable();
+            $table->decimal('giua_ki', 5, 2)->nullable();
+            $table->decimal('cuoi_ki', 5, 2)->nullable();
+            $table->decimal('diem_tb', 5, 2)->nullable();
+
+            $table->timestamps();
         });
     }
 

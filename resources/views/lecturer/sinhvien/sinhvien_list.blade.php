@@ -7,6 +7,9 @@
         @if($sinhviens->isEmpty())
             <p>Không có sinh viên nào trong lớp học phần này.</p>
         @else
+            <a href="{{ route('lecturer.diem.baocao', ['lophoc_ID' => $lophocphan->lophoc_ID]) }}" class="btn btn-success mb-3">
+                Báo cáo điểm lớp
+            </a>
             <table class="table">
                 <thead>
                     <tr>

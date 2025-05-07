@@ -16,7 +16,12 @@ class Diem extends Model
     protected $fillable = [
         'sinhvien_ID',
         'lophoc_ID',
-        'diem',
+        'diem_15p_1',
+        'diem_15p_2',
+        'diem_15p_3',
+        'giua_ki',
+        'cuoi_ki',
+        'diem_tb',
     ];
 
     // Định nghĩa quan hệ với model SinhVien
