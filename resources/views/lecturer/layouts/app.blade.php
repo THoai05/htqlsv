@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('lecturer.lophocphan.index') }}">Lịch Học</a>
+                        <a class="nav-link" href="{{ route('lecturer.lophocphan.index') }}">Quản lý Lớp Học</a>
                     </li>
                     <!-- Thêm các mục menu khác nếu cần -->
                 </ul>
