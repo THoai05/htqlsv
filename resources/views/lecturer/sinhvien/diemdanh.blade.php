@@ -1,13 +1,13 @@
-@extends('lecturer.layouts.app')
+    @extends('lecturer.layouts.app')
 
-@section('content')
+    @section('content')
     <div class="container">
-        <h1>Điểm danh lớp học phần: {{ $lophocphan->ten_lophoc }}</h1>
+        <h1>Điểm danh theo tuần: {{ $lophocphan->ten_lophoc }}</h1>
 
         @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
         @endif
 
         <form action="{{ route('lecturer.diemdanh.store', ['lophoc_ID' => $lophocphan->lophoc_ID]) }}" method="POST">
@@ -17,28 +17,34 @@
                     <tr>
                         <th>MSSV</th>
                         <th>Họ tên</th>
-                        <th>Ngày bắt đầu</th>
-                        <th>Ngày kết thúc</th>
-                        <th>Điểm danh</th>
+                        @for($week = 1; $week <= 15; $week++)
+                            <th>Tuần {{ $week }}</th>
+                            @endfor
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($sinhviens as $sinhvien)
-                        <tr>
-                            <td>{{ $sinhvien->mssv }}</td>
-                            <td>{{ $sinhvien->hoten }}</td>
-                            <td>{{ $lophocphan->thoigianbatdau }}</td>
-                            <td>{{ $lophocphan->thoigianketthuc }}</td>
+                    <tr>
+                        <td>{{ $sinhvien->mssv }}</td>
+                        <td>{{ $sinhvien->hoten }}</td>
+                        @for($week = 1; $week <= 15; $week++)
+                            @php
+                            $diemdanh_sv=$diemdanh->where('sinhvien_ID', $sinhvien->sinhvien_ID)
+                            ->where('tuan', $week)
+                            ->first();
+                            @endphp
                             <td>
-                                <!-- Kiểm tra nếu sinh viên đã được điểm danh -->
-                                <input type="checkbox" name="co_mat[{{ $sinhvien->sinhvien_ID }}]" value="1"
-                                    @if($diemdanh->where('sinhvien_ID', $sinhvien->sinhvien_ID)->first() && $diemdanh->where('sinhvien_ID', $sinhvien->sinhvien_ID)->first()->co_mat) checked @endif>
+                                <input type="checkbox"
+                                    name="co_mat[{{ $sinhvien->sinhvien_ID }}][{{ $week }}]"
+                                    value="1"
+                                    @if($diemdanh_sv && $diemdanh_sv->co_mat) checked @endif>
                             </td>
-                        </tr>
+                            @endfor
+                    </tr>
                     @endforeach
                 </tbody>
             </table>
             <button type="submit" class="btn btn-primary">Lưu điểm danh</button>
         </form>
     </div>
-@endsection
+    @endsection

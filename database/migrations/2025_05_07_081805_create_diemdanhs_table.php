@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration {
     /**
@@ -14,11 +15,9 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('lophoc_ID');
             $table->unsignedBigInteger('sinhvien_ID');
-            $table->date('ngay')->default(DB::raw('CURRENT_DATE'));
-            $table->boolean('co_mat')->default(false); // true = có mặt, false = vắng
+            $table->tinyInteger('co_mat')->default(0);
+            $table->tinyInteger('tuan')->unsigned();
             $table->timestamps();
-
-            $table->unique(['lophoc_ID', 'sinhvien_ID', 'ngay']); // tránh trùng điểm danh cùng ngày
         });
     }
 

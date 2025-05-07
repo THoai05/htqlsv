@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Lecturer;
 
-use App\Models\Diem;
 use App\Models\DiemDanh;
 use App\Models\SinhVien;
 use App\Models\LopHocPhan;
@@ -21,41 +20,55 @@ class DiemDanhController extends Controller
             return redirect()->back()->with('error', 'Không tìm thấy lớp học phần');
         }
 
+        // Lấy danh sách sinh viên trong lớp học phần
         $sinhviens = $lophocphan->sinhviens;
+
+        // Lấy tất cả điểm danh đã có của lớp học phần
         $diemdanh = DiemDanh::where('lophoc_ID', $lophocphan->lophoc_ID)->get();
+
         return view('lecturer.sinhvien.diemdanh', compact('lophocphan', 'sinhviens', 'diemdanh'));
     }
 
     // Lưu thông tin điểm danh
     public function store(Request $request, $lophoc_ID)
     {
+        // Kiểm tra và validate dữ liệu
         $request->validate([
             'co_mat' => 'nullable|array',
-            'co_mat.*' => 'boolean',
         ]);
 
-        // Lấy danh sách sinh viên trong lớp
+        // Lấy lớp học phần
         $lophocphan = LopHocPhan::find($lophoc_ID);
 
         if (!$lophocphan) {
             return redirect()->back()->with('error', 'Không tìm thấy lớp học phần');
         }
 
+        // Lấy danh sách sinh viên trong lớp học phần
         $sinhviens = $lophocphan->sinhviens;
 
-        // Duyệt qua tất cả sinh viên trong lớp và cập nhật hoặc tạo mới điểm danh
+        // Duyệt qua tất cả sinh viên trong lớp
         foreach ($sinhviens as $sinhvien) {
-            // Kiểm tra xem sinh viên có mặt hay không
-            $co_mat = isset($request->co_mat[$sinhvien->sinhvien_ID]) ? true : false;
+            // Duyệt qua từng tuần (từ tuần 1 đến tuần 15)
+            for ($tuan = 1; $tuan <= 15; $tuan++) {
+                // Kiểm tra xem sinh viên có mặt hay không trong tuần
+                $coMat = isset($request->co_mat[$sinhvien->sinhvien_ID][$tuan]) ? true : false;
 
-            // Cập nhật hoặc tạo mới bản ghi điểm danh
-            DiemDanh::updateOrCreate(
-                ['lophoc_ID' => $lophoc_ID, 'sinhvien_ID' => $sinhvien->sinhvien_ID],
-                ['co_mat' => $co_mat]
-            );
+                // Cập nhật hoặc tạo mới thông tin điểm danh cho sinh viên
+                DiemDanh::updateOrCreate(
+                    [
+                        'lophoc_ID' => $lophoc_ID,
+                        'sinhvien_ID' => $sinhvien->sinhvien_ID,
+                        'tuan' => $tuan,
+                    ],
+                    [
+                        'co_mat' => $coMat,
+                    ]
+                );
+            }
         }
 
-        // Trả về trang điểm danh với thông báo thành công
+        // Sau khi lưu, trả về thông báo thành công
         return redirect()->route('lecturer.diemdanh.index', ['lophoc_ID' => $lophoc_ID])
             ->with('success', 'Điểm danh đã được cập nhật');
     }

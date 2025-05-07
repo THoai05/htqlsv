@@ -11,7 +11,7 @@ class DiemDanh extends Model
     protected $fillable = [
         'lophoc_ID',
         'sinhvien_ID',
-        'ngay_diem_danh',
+        'tuan',
         'co_mat',
         'ghi_chu',
     ];
