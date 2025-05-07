@@ -58,7 +58,7 @@ class DiemController extends Controller
         return redirect()->route('lecturer.diem.show', [
             'lophoc_ID' => $lophoc_ID,
             'sinhvien_ID' => $sinhvien_ID,
-        ])->with('success', 'Đã lưu điểm thành công!');
+        ])->with('success', 'Bạn Đã lưu điểm thành công!');
     }
 
     public function showDiemSinhVien($lophoc_ID)
