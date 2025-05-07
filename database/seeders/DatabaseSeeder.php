@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             MonHocSeeder::class,
             PhongHocSeeder::class,
             LopHocPhanSeeder::class,
+            LopSinhvienSeeder::class
         ]);
     }
 }

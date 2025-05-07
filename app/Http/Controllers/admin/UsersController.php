@@ -12,7 +12,7 @@ class UsersController extends Controller
     // Hiển thị danh sách users
     public function index()
     {
-        $users = User::all();
+        $users = User::all();   
         return view('admin.users.index', ['users' => $users]);
     }
 

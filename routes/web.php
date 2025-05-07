@@ -70,4 +70,5 @@ Route::prefix('lecturer')->name('lecturer.')->middleware(['web', 'auth'])->group
 
     Route::get('/lophocphan', [LopHocPhanController::class, 'index'])->name('lophocphan.index');
     Route::get('/lophocphan/{lophoc_ID}/sinhvien', [LopHocPhanController::class, 'showSinhVien'])->name('lophocphan.sinhvien');
+    Route::get('/lophocphan/{lophoc_ID}/baocao', [DiemController::class, 'showDiemSinhVien'])->name('diem.baocao');
 });

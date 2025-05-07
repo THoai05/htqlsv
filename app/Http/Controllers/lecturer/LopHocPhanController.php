@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Lecturer;
 
+use App\Models\Diem;
 use App\Models\SinhVien;
 use App\Models\GiangVien;
 use App\Models\LopHocPhan;
@@ -37,4 +38,25 @@ class LopHocPhanController extends Controller
 
         return view('lecturer.sinhvien.sinhvien_list', compact('sinhviens', 'lophocphan'));
     }
+
+
+    public function showDiemSinhVien($lophoc_ID)
+    {
+        $danhsach = Diem::where('lophoc_ID', $lophoc_ID)
+            ->join('sinhvien', 'diem.sinhvien_ID', '=', 'sinhvien.sinhvien_ID')
+            ->select(
+                'sinhvien.sinhvien_ID as mssv',
+                'sinhvien.hoten',
+                'diem.diem_15p_1',
+                'diem.diem_15p_2',
+                'diem.diem_15p_3',
+                'diem.giua_ki',
+                'diem.cuoi_ki',
+                'diem.diem_tb'
+            )
+            ->get();
+
+        return view('lecturer.sinhvien.baocao_diem', compact('danhsach', 'lophoc_ID'));
+    }
+
 }
