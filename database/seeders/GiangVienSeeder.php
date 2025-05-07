@@ -12,7 +12,13 @@ class GiangVienSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        DB::table('giang_viens')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+        // Truncate bảng giảng viên
+        GiangVien::truncate();
+
+        // Bật lại ràng buộc khóa ngoại
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         // Gán user_id từ 3 đến 10
         foreach (range(3, 12) as $userId) {
             GiangVien::create([
