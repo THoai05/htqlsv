@@ -13,7 +13,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::9CVsSft74rJwJdsJ',
+            '_route' => 'generated::ZXkUIhscMCiakzCt',
           ),
           1 => NULL,
           2 => 
@@ -33,7 +33,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::6gQYU9KNIhRvTQ5M',
+            '_route' => 'generated::zTyYnOshz68KfdQB',
           ),
           1 => NULL,
           2 => 
@@ -461,7 +461,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/admin/(?|sinhvien/([^/]++)(?|(*:37)|/edit(*:49)|(*:56))|giangviens/([^/]++)(?|(*:86)|/edit(*:98)|(*:105))|monhocs/([^/]++)(?|(*:133)|/edit(*:146)|(*:154))|lichhoc/([^/]++)(?|/edit(*:187)|(*:195))|users/([^/]++)(?|/edit(*:226)|(*:234)))|/lecturer/(?|monhoc/([^/]++)(?|/edit(*:280)|(*:288))|diem/([^/]++)/([^/]++)(?|(*:322))|lophocphan/([^/]++)/sinhvien(*:359))|/storage/(.*)(*:381))/?$}sDu',
+      0 => '{^(?|/admin/(?|sinhvien/([^/]++)(?|(*:37)|/edit(*:49)|(*:56))|giangviens/([^/]++)(?|(*:86)|/edit(*:98)|(*:105))|monhocs/([^/]++)(?|(*:133)|/edit(*:146)|(*:154))|lichhoc/([^/]++)(?|/edit(*:187)|(*:195))|users/([^/]++)(?|/edit(*:226)|(*:234)))|/lecturer/(?|monhoc/([^/]++)(?|/edit(*:280)|(*:288))|diem/([^/]++)/([^/]++)(?|(*:322))|lophocphan/([^/]++)/(?|sinhvien(*:362)|baocao(*:376)))|/storage/(.*)(*:399))/?$}sDu',
     ),
     3 => 
     array (
@@ -965,7 +965,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      359 => 
+      362 => 
       array (
         0 => 
         array (
@@ -988,7 +988,30 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      381 => 
+      376 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'lecturer.diem.baocao',
+          ),
+          1 => 
+          array (
+            0 => 'lophoc_ID',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      399 => 
       array (
         0 => 
         array (
@@ -1026,7 +1049,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::9CVsSft74rJwJdsJ' => 
+    'generated::ZXkUIhscMCiakzCt' => 
     array (
       'methods' => 
       array (
@@ -1055,7 +1078,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000004b20000000000000000";}}',
-        'as' => 'generated::9CVsSft74rJwJdsJ',
+        'as' => 'generated::ZXkUIhscMCiakzCt',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1071,7 +1094,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::6gQYU9KNIhRvTQ5M' => 
+    'generated::zTyYnOshz68KfdQB' => 
     array (
       'methods' => 
       array (
@@ -1093,7 +1116,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::6gQYU9KNIhRvTQ5M',
+        'as' => 'generated::zTyYnOshz68KfdQB',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2796,6 +2819,45 @@ app('router')->setCompiledRoutes(
         'uses' => 'App\\Http\\Controllers\\Lecturer\\LopHocPhanController@showSinhVien',
         'controller' => 'App\\Http\\Controllers\\Lecturer\\LopHocPhanController@showSinhVien',
         'as' => 'lecturer.lophocphan.sinhvien',
+        'namespace' => NULL,
+        'prefix' => '/lecturer',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'lecturer.diem.baocao' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'lecturer/lophocphan/{lophoc_ID}/baocao',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Lecturer\\DiemController@showDiemSinhVien',
+        'controller' => 'App\\Http\\Controllers\\Lecturer\\DiemController@showDiemSinhVien',
+        'as' => 'lecturer.diem.baocao',
         'namespace' => NULL,
         'prefix' => '/lecturer',
         'where' => 
