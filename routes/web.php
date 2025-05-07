@@ -84,4 +84,5 @@ Route::prefix('lecturer')->name('lecturer.')->middleware(['web', 'auth'])->group
 Route::prefix('student')->name('student.')->middleware(['web', 'auth'])->group(function () {
     Route::get('student/lophocphan', [StudentController::class, 'index'])->name('lophocphan.index');
     Route::get('student/{sinhvien_ID}/chitietthongtin', [StudentController::class, 'chiTietThongTin'])->name('chitietthongtin');
+    Route::get('student/diem/{lophoc_ID}/{sinhvien_ID}', [StudentController::class, 'showDiem'])->name('diem.show');
 });

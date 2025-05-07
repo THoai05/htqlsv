@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Models\Diem;
+use App\Models\LopHocPhan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -25,5 +27,19 @@ class StudentController extends Controller
     {
         $sinhvien = Auth::user()->sinhvien;
         return view('student.chitietthongtin', compact('sinhvien'));
+    }
+
+    public function showDiem($lophoc_ID, $sinhvien_ID)
+    {
+
+        // Lấy điểm của sinh viên theo lophoc_ID và sinhvien_ID
+        $lophocphan = LopHocPhan::find($lophoc_ID);
+        $diem = Diem::where('lophoc_ID', $lophoc_ID)
+            ->where('sinhvien_ID', $sinhvien_ID)
+            ->first();
+
+        // Trả về view hiển thị điểm của sinh viên
+        return view('student.diem', compact('diem', 'lophoc_ID', 'sinhvien_ID', 'lophocphan'));
+
     }
 }
