@@ -10,7 +10,7 @@ class LopHocPhanSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('users')->truncate();
+        DB::table('LopHocPhan')->truncate();
 
         $monHocIds = DB::table('mon_hocs')->pluck('id')->toArray();
         $phongHocIds = DB::table('phonghoc')->pluck('phonghoc_ID')->toArray();

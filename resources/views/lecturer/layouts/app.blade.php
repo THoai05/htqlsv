@@ -23,14 +23,15 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Đăng nhập</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('lecturer.monhoc.index') }}">Môn học</a>
+                        <a class="nav-link" href="{{ route('lecturer.lophocphan.index') }}">Lịch Học</a>
                     </li>
                     <!-- Thêm các mục menu khác nếu cần -->
                 </ul>
             </div>
+            <form action="{{ route('logout') }}" method="POST" class="d-inline-block">
+                @csrf
+                <button type="submit" class="btn btn-outline-danger navbar-btn">Đăng xuất</button>
+            </form>
         </nav>
 
         <div class="content">

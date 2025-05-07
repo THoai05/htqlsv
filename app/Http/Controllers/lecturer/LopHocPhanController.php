@@ -18,7 +18,7 @@ class LopHocPhanController extends Controller
 
         // Kiểm tra nếu giảng viên tồn tại
         if ($giangvien) {
-            $lophocphans = $giangvien->lophocphans; // Lấy danh sách lớp học phần của giảng viên
+            $lophocphans = $giangvien->lophocphans()->with(['monhoc', 'phonghoc'])->get();
             return view('lecturer.sinhvien.lophocphan_list', compact('lophocphans'));
         }
 
@@ -39,6 +39,7 @@ class LopHocPhanController extends Controller
         return view('lecturer.sinhvien.sinhvien_list', compact('sinhviens', 'lophocphan'));
     }
 
+
     public function showDiemSinhVien($lophoc_ID)
     {
         $danhsach = Diem::where('lophoc_ID', $lophoc_ID)
@@ -57,7 +58,5 @@ class LopHocPhanController extends Controller
 
         return view('lecturer.sinhvien.baocao_diem', compact('danhsach', 'lophoc_ID'));
     }
-
-
 
 }
