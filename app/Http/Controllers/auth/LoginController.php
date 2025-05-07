@@ -33,6 +33,9 @@ class LoginController extends Controller
             if ($user->role === 'giangvien') {
                 return redirect()->route('lecturer.lophocphan.index');
             }
+            if ($user->role === 'sinhvien') {
+                return redirect()->route('student.lophocphan.index');
+            }
         }
         throw \Illuminate\Validation\ValidationException::withMessages([
             'credentials' => 'Nhap sai du lieu'
