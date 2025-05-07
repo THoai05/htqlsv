@@ -21,8 +21,14 @@ class Sinhvien extends Model
 
     public function lopHocPhans()
     {
-        return $this->belongsToMany(LopHocPhan::class, 'lop_hoc_phan_sinhvien', 'sinhvien_ID', 'lophoc_ID');
+        return $this->belongsToMany(LopHocPhan::class, 'lop_sinhvien', 'sinhvien_ID', 'lophoc_ID');
     }
+
+    public function diemDanh()
+    {
+        return $this->hasMany(DiemDanh::class, 'sinhvien_ID', 'sinhvien_ID');
+    }
+
 }
 
 

@@ -50,4 +50,9 @@ class LopHocPhan extends Model
     {
         return $this->hasMany(Diem::class, 'lophoc_ID', 'lophoc_ID');
     }
+
+    public function diemDanh()
+    {
+        return $this->hasMany(DiemDanh::class, 'lophoc_ID', 'lophoc_ID');
+    }
 }
