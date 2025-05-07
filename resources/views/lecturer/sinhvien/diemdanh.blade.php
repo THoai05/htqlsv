@@ -17,6 +17,8 @@
                     <tr>
                         <th>MSSV</th>
                         <th>Họ tên</th>
+                        <th>Ngày bắt đầu</th>
+                        <th>Ngày kết thúc</th>
                         <th>Điểm danh</th>
                     </tr>
                 </thead>
@@ -25,6 +27,8 @@
                         <tr>
                             <td>{{ $sinhvien->mssv }}</td>
                             <td>{{ $sinhvien->hoten }}</td>
+                            <td>{{ $lophocphan->thoigianbatdau }}</td>
+                            <td>{{ $lophocphan->thoigianketthuc }}</td>
                             <td>
                                 <!-- Kiểm tra nếu sinh viên đã được điểm danh -->
                                 <input type="checkbox" name="co_mat[{{ $sinhvien->sinhvien_ID }}]" value="1"
