@@ -17,7 +17,19 @@ class Sinhvien extends Model
 
     protected $keyType = 'int'; // Đảm bảo khóa chính là số nguyên
 
-    protected $fillable = ['hoten', 'mssv', 'email', 'sdt'];
+    protected $fillable = [
+        'hoten',
+        'mssv',
+        'email',
+        'sdt',
+        'cccd',         // Thêm cccd vào fillable
+        'ngaysinh',      // Thêm ngaysinh vào fillable
+        'gioitinh',      // Thêm gioitinh vào fillable
+        'dantoc',        // Thêm dantoc vào fillable
+        'tongiao',       // Thêm tongiao vào fillable
+        'noisinh',       // Thêm noisinh vào fillable
+        'tinhtrang'      // Thêm tinhtrang vào fillable
+    ];
 
     public function lopHocPhans()
     {

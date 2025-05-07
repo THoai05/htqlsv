@@ -19,7 +19,14 @@ class SinhvienSeeder extends Seeder
                 'hoten' => $faker->name,
                 'mssv' => 'SV' . str_pad($userId, 4, '0', STR_PAD_LEFT),
                 'email' => $faker->unique()->safeEmail,
-                'sdt' => $faker->numerify('0#########'), // VD: 0912345678
+                'sdt' => $faker->unique()->numerify('0#########'),
+                'cccd' => $faker->unique()->numerify('0############'),
+                'ngaysinh' => $faker->date('Y-m-d', '2005-01-01'),
+                'gioitinh' => $faker->randomElement(['Nam', 'Nữ']),
+                'dantoc' => $faker->randomElement(['Kinh', 'Khác']),
+                'tongiao' => $faker->randomElement(['Có', 'Không']),
+                'noisinh' => $faker->city, // Nơi sinh
+                'tinhtrang' => 'Còn học',
                 'user_id' => $userId,
             ]);
         }
