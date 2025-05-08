@@ -23,7 +23,7 @@ class LopHocPhanSeeder extends Seeder
 
         $data = [];
 
-        for ($i = 1; $i <= 15; $i++) {
+        for ($i = 1; $i <= 30; $i++) {
             // Chọn tiết bắt đầu theo nhóm hợp lệ
             $tietBatDau = fake()->randomElement([1, 6]);
 

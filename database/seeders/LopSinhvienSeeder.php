@@ -14,7 +14,7 @@ class LopSinhvienSeeder extends Seeder
         $sinhvienIDs = range(1, 88);
         $usedPairs = [];
 
-        for ($lopID = 1; $lopID <= 15; $lopID++) {
+        for ($lopID = 1; $lopID <= 30; $lopID++) {
             // Lấy ngẫu nhiên 20 sinh viên không trùng lặp
             $selected = collect($sinhvienIDs)->random(20);
 

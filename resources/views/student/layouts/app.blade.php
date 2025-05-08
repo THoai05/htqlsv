@@ -83,16 +83,20 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('student.chitietthongtin', $sinhvien->sinhvien_ID) }}">Xem Thông Tin Cá Nhân</a>
+                        <a class="nav-link" href="{{ route('student.chitietthongtin', $sinhvien->sinhvien_ID) }}">
+                            <img src="{{ asset('images/029.png') }}" alt="Xem Thông Tin Cá Nhân">
+                            Xem Thông Tin Cá Nhân</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('student.lichhoc.index') }}">Xem Lịch Học</a>
+                        <a class="nav-link" href="{{ route('student.lichhoc.index') }}">
+                            <img src="{{ asset('images/calendar.png') }}" alt="Xem Học Phần">
+                            Xem Lịch Học</a>
                     </li>
                 </ul>
             </div>
             <form action="{{ route('logout') }}" method="POST" class="d-inline-block">
                 @csrf
-                <button type="submit" class="btn navbar-btn">Đăng xuất</button>
+                <button type="submit" class="btn btn-outline-danger navbar-btn">Đăng xuất</button>
             </form>
         </div>
     </nav>

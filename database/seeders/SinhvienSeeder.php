@@ -16,9 +16,14 @@ class SinhvienSeeder extends Seeder
         \App\Models\Sinhvien::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
+        $ho = ['Nguyễn', 'Trần', 'Lê', 'Phạm', 'Hoàng', 'Phan', 'Vũ', 'Đặng', 'Bùi', 'Đỗ'];
+        $ten = ['Anh', 'Bình', 'Châu', 'Dũng', 'Giang', 'Hà', 'Hải', 'Hân', 'Hòa', 'Hùng', 'Khánh', 'Lan', 'Linh', 'Minh', 'Nam', 'Ngọc', 'Nhung', 'Phương', 'Quang', 'Sơn', 'Tâm', 'Thảo', 'Thành', 'Trang', 'Tuấn', 'Việt', 'Yến'];
+        $noisinh = ['Hà Nội', 'TP Hồ Chí Minh', 'Đà Nẵng', 'Hải Phòng', 'Cần Thơ', 'Huế', 'Bình Dương', 'Đồng Nai', 'Bắc Ninh', 'Quảng Ninh'];
+
         foreach (range(13, 100) as $userId) {
+            $hoten = $faker->randomElement($ho) . ' ' . $faker->randomElement($ten) . ' ' . $faker->randomElement($ten);
             Sinhvien::create([
-                'hoten' => $faker->name,
+                'hoten' => $hoten,
                 'mssv' => 'SV' . str_pad($userId, 4, '0', STR_PAD_LEFT),
                 'email' => $faker->unique()->safeEmail,
                 'sdt' => $faker->unique()->numerify('0#########'),
@@ -27,7 +32,7 @@ class SinhvienSeeder extends Seeder
                 'gioitinh' => $faker->randomElement(['Nam', 'Nữ']),
                 'dantoc' => $faker->randomElement(['Kinh', 'Khác']),
                 'tongiao' => $faker->randomElement(['Có', 'Không']),
-                'noisinh' => $faker->city, // Nơi sinh
+                'noisinh' => $faker->randomElement($noisinh),
                 'tinhtrang' => 'Còn học',
                 'user_id' => $userId,
             ]);

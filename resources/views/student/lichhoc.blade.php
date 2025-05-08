@@ -26,12 +26,12 @@
                     @if (isset($days[$day]))
                     @foreach ($days[$day] as $class)
                     <div><strong>{{ $class['class'] }}</strong></div>
-                    <div>{{ $class['monhoc'] }} ({{ $class['sotinchi'] }} TC)</div>
+                    <div>{{ $class['monhoc'] }} ({{ $class['sotinchi'] }} tín chỉ)</div>
                     <div>Tiết: {{ $class['time'] }}</div>
                     <div>Giảng viên: {{ $class['giangvien'] }}</div>
                     @endforeach
                     @else
-                    <div class="text-muted">Không có lớp</div>
+                    <div class="text-muted"></div>
                     @endif
                 </td>
                 @endforeach

@@ -26,7 +26,9 @@
                 <td>{{ $lop->tietketthuc }}</td>
                 <td>
                     <!-- Thêm nút để xem danh sách sinh viên -->
-                    <a href="{{ route('lecturer.lophocphan.sinhvien', $lop->lophoc_ID) }}" class="btn btn-primary">Xem sinh viên</a>
+                    <a href="{{ route('lecturer.lophocphan.sinhvien', $lop->lophoc_ID) }}" class="btn btn-primary align-items-center">
+                        <img src="{{ asset('images/32.png') }}" style="width: 24px; height: 24px;margin-right: 5px;" alt="Xem sinh viên">Xem Sinh Viên
+                    </a>
                 </td>
             </tr>
             @endforeach
