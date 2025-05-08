@@ -32,4 +32,3 @@ class MonHoc extends Model
         return $this->hasMany(LopHocPhan::class, 'mamonhoc', 'id');
     }
 }
-

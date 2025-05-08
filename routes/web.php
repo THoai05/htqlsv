@@ -75,14 +75,14 @@ Route::prefix('lecturer')->name('lecturer.')->middleware(['web', 'auth'])->group
     Route::get('/lophocphan/{lophoc_ID}/baocao', [DiemController::class, 'showDiemSinhVien'])->name('diem.baocao');
     Route::get('/lophocphan/{lophoc_ID}/diemdanh', [DiemDanhController::class, 'index'])->name('diemdanh.index');
     Route::post('/lophocphan/{lophoc_ID}/diemdanh', [DiemDanhController::class, 'store'])->name('diemdanh.store');
-
 });
 
 
 
 //route cho sinh vien
 Route::prefix('student')->name('student.')->middleware(['web', 'auth'])->group(function () {
-    Route::get('student/lophocphan', [StudentController::class, 'index'])->name('lophocphan.index');
-    Route::get('student/{sinhvien_ID}/chitietthongtin', [StudentController::class, 'chiTietThongTin'])->name('chitietthongtin');
-    Route::get('student/diem/{lophoc_ID}/{sinhvien_ID}', [StudentController::class, 'showDiem'])->name('diem.show');
+    Route::get('lophocphan', [StudentController::class, 'index'])->name('lophocphan.index');
+    Route::get('{sinhvien_ID}/chitietthongtin', [StudentController::class, 'chiTietThongTin'])->name('chitietthongtin');
+    Route::get('diem/{lophoc_ID}/{sinhvien_ID}', [StudentController::class, 'showDiem'])->name('diem.show');
+    Route::get('lichhoc', [StudentController::class, 'lichHoc'])->name('lichhoc.index'); // Đảm bảo route này đã được khai báo
 });

@@ -30,17 +30,19 @@ class LopHocPhan extends Model
         return $this->belongsTo(PhongHoc::class, 'phonghoc_ID', 'phonghoc_ID');
     }
 
-    // Liên kết với bảng MonHoc
+    // Cập nhật quan hệ với bảng MonHoc
     public function monhoc()
     {
-        return $this->belongsTo(MonHoc::class, 'mamonhoc', 'id'); // mamonhoc tham chiếu tới id của bảng monhocs
+        return $this->belongsTo(MonHoc::class, 'mamonhoc', 'id'); // 'mamonhoc' là khóa ngoại tham chiếu tới 'id' trong bảng 'mon_hocs'
     }
 
-    // Liên kết với bảng GiangVien
+    // Cập nhật quan hệ với bảng GiangVien
     public function giangvien()
     {
-        return $this->belongsTo(GiangVien::class, 'giangvien_ID', 'id'); // giangvien_ID tham chiếu tới id của bảng giangviens
+        return $this->belongsTo(GiangVien::class, 'giangvien_ID', 'id'); // 'giangvien_ID' là khóa ngoại tham chiếu tới 'id' trong bảng 'giang_viens'
     }
+
+    // Liên kết với bảng SinhVien (many-to-many)
     public function sinhviens()
     {
         return $this->belongsToMany(SinhVien::class, 'lop_sinhvien', 'lophoc_ID', 'sinhvien_ID');
