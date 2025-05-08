@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\PhongHoc;
-
+use App\Models\SinhVien;
 
 class StudentController extends Controller
 {

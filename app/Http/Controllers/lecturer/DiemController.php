@@ -61,9 +61,9 @@ class DiemController extends Controller
         ])->with('success', 'Bạn Đã lưu điểm thành công!');
     }
 
-    public function showDiemSinhVien($lophoc_ID)
+    public function showDiemSinhVien(Request $request, $lophoc_ID)
     {
-        $danhsach = Diem::where('lophoc_ID', $lophoc_ID)
+        $query = Diem::where('diem.lophoc_ID', $lophoc_ID)
             ->join('sinhvien', 'diem.sinhvien_ID', '=', 'sinhvien.sinhvien_ID')
             ->select(
                 'sinhvien.mssv as mssv',
@@ -74,9 +74,20 @@ class DiemController extends Controller
                 'diem.giua_ki',
                 'diem.cuoi_ki',
                 'diem.diem_tb'
-            )
-            ->get();
+            );
+
+        // Thêm điều kiện tìm kiếm nếu có request search
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('sinhvien.mssv', 'like', "%$search%")
+                    ->orWhere('sinhvien.hoten', 'like', "%$search%");
+            });
+        }
+
+        $danhsach = $query->get();
         $lophoc = LopHocPhan::find($lophoc_ID);
+
         return view('lecturer.sinhvien.baocao_diem', compact('danhsach', 'lophoc_ID', 'lophoc'));
     }
 }
