@@ -9,6 +9,20 @@
             {{ session('success') }}
         </div>
         @endif
+        <form method="GET" action="{{ route('lecturer.diemdanh.index', ['lophoc_ID' => $lophocphan->lophoc_ID]) }}" class="mb-4">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="input-group shadow-sm">
+                        <input type="text" name="search" class="form-control rounded-left"
+                            placeholder="🔍 Tìm theo MSSV hoặc tên sinh viên"
+                            value="{{ request('search') }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary rounded-right" style="margin-left:20px;" type="submit">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
 
         <form action="{{ route('lecturer.diemdanh.store', ['lophoc_ID' => $lophocphan->lophoc_ID]) }}" method="POST">
             @csrf

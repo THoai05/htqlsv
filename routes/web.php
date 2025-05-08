@@ -84,5 +84,5 @@ Route::prefix('student')->name('student.')->middleware(['web', 'auth'])->group(f
     Route::get('lophocphan', [StudentController::class, 'index'])->name('lophocphan.index');
     Route::get('{sinhvien_ID}/chitietthongtin', [StudentController::class, 'chiTietThongTin'])->name('chitietthongtin');
     Route::get('diem/{lophoc_ID}/{sinhvien_ID}', [StudentController::class, 'showDiem'])->name('diem.show');
-    Route::get('lichhoc', [StudentController::class, 'lichHoc'])->name('lichhoc.index'); // Đảm bảo route này đã được khai báo
+    Route::get('lichhoc', [StudentController::class, 'lichHoc'])->name('lichhoc.index');
 });

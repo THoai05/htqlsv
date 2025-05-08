@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 class DiemDanhController extends Controller
 {
     // Hiển thị trang điểm danh của lớp học phần
-    public function index($id)
+    public function index(Request $request, $id)
     {
         // Lấy thông tin lớp học phần
         $lophocphan = LopHocPhan::find($id);
@@ -20,14 +20,27 @@ class DiemDanhController extends Controller
             return redirect()->back()->with('error', 'Không tìm thấy lớp học phần');
         }
 
-        // Lấy danh sách sinh viên trong lớp học phần
-        $sinhviens = $lophocphan->sinhviens;
+        // Bắt đầu query danh sách sinh viên
+        $query = $lophocphan->sinhviens();
 
-        // Lấy tất cả điểm danh đã có của lớp học phần
+        // Nếu có từ khóa tìm kiếm, thêm điều kiện lọc
+        if ($request->has('search') && $request->search) {
+            $keyword = $request->search;
+            $query->where(function ($q) use ($keyword) {
+                $q->where('mssv', 'like', "%$keyword%")
+                    ->orWhere('hoten', 'like', "%$keyword%");
+            });
+        }
+
+        // Lấy kết quả sinh viên sau khi lọc (nếu có)
+        $sinhviens = $query->get();
+
+        // Lấy danh sách điểm danh của lớp học phần
         $diemdanh = DiemDanh::where('lophoc_ID', $lophocphan->lophoc_ID)->get();
 
         return view('lecturer.sinhvien.diemdanh', compact('lophocphan', 'sinhviens', 'diemdanh'));
     }
+
 
     // Lưu thông tin điểm danh
     public function store(Request $request, $lophoc_ID)
