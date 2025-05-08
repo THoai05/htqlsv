@@ -12,7 +12,7 @@ class PhongHocSeeder extends Seeder
     {
         $phongs = [];
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 15; $i++) {
             $phongs[] = [
                 'tenphonghoc' => 'Phòng ' . chr(64 + $i) . rand(1, 3), // VD: Phòng A1, B2,...
                 'created_at' => Carbon::now(),

@@ -64,7 +64,7 @@ class MonHocSeeder extends Seeder
         $giangViens = DB::table('giang_viens')->pluck('id')->toArray();
 
         // Tạo 10 môn học giả
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 15; $i++) {
             // Chọn khoa ngẫu nhiên
             $khoa = $faker->randomElement(['CNTT', 'QTKD', 'Ngoại ngữ', 'Toán']);
 
