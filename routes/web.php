@@ -85,4 +85,6 @@ Route::prefix('student')->name('student.')->middleware(['web', 'auth'])->group(f
     Route::get('{sinhvien_ID}/chitietthongtin', [StudentController::class, 'chiTietThongTin'])->name('chitietthongtin');
     Route::get('diem/{lophoc_ID}/{sinhvien_ID}', [StudentController::class, 'showDiem'])->name('diem.show');
     Route::get('lichhoc', [StudentController::class, 'lichHoc'])->name('lichhoc.index');
+    Route::put('{sinhvienID}/chinhsuachitietthongtin', [StudentController::class, 'update'])->name('chinhsuathongtin');
+    Route::get('edit/{sinhvienID}', [StudentController::class, 'edit'])->name('edit.thongtin');
 });
