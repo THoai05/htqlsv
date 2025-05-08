@@ -82,4 +82,45 @@ class StudentController extends Controller
 
         return view('student.lichhoc', compact('lichHoc'));
     }
+
+    public function update(Request $request, $sinhvien_ID)
+    {
+        $sinhvien = Sinhvien::findOrFail($sinhvien_ID);
+
+        // Validation
+        $request->validate([
+            'hoten' => 'required|string|max:255',
+            'email' => 'required|email|max:100|unique:sinhvien,email,' . $sinhvien_ID . ',sinhvien_ID',
+            'sdt' => 'required|string|max:15|unique:sinhvien,sdt,' . $sinhvien_ID . ',sinhvien_ID',
+            'cccd' => 'nullable|string|max:20', // Thêm validation cho cccd nếu có
+            'ngaysinh' => 'nullable|date',
+            'gioitinh' => 'nullable|in:Nam,Nữ',
+            'dantoc' => 'nullable|string|max:100',
+            'tongiao' => 'nullable|string|max:100',
+            'noisinh' => 'nullable|string|max:255',
+            'tinhtrang' => 'nullable|string|max:100',
+        ]);
+
+        // Cập nhật thông tin sinh viên
+        $sinhvien->update($request->only([
+            'hoten',
+            'email',
+            'sdt',
+            'cccd',
+            'ngaysinh',
+            'gioitinh',
+            'dantoc',
+            'tongiao',
+            'noisinh',
+            'tinhtrang'
+        ]));
+
+        return redirect()->route('student.chitietthongtin', $sinhvien->sinhvien_ID)->with('success', 'Cập nhật sinh viên thành công!');
+    }
+
+    public function edit($sinhvien_ID)
+    {
+        $sinhvien = Sinhvien::findOrFail($sinhvien_ID);
+        return view('student.chinhsuachitiet', compact('sinhvien'));
+    }
 }

@@ -17,7 +17,7 @@
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
     'cipher' => 'AES-256-CBC',
-    'key' => 'base64:iTzewOUIZYP4VdAL0PM6wsObF8vOtbdogtetE8iNVeE=',
+    'key' => 'base64:VrdwY0jc6y+5fAOhJm+Y3AL6cWAC98l/JDo2kQG3RCM=',
     'previous_keys' => 
     array (
     ),
@@ -164,8 +164,8 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\doAnTrienkhai\\doanTrienKhai\\htqlsv\\storage\\framework/cache/data',
-        'lock_path' => 'C:\\doAnTrienkhai\\doanTrienKhai\\htqlsv\\storage\\framework/cache/data',
+        'path' => 'C:\\Users\\admin\\htqlsv\\storage\\framework/cache/data',
+        'lock_path' => 'C:\\Users\\admin\\htqlsv\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -337,7 +337,7 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\doAnTrienkhai\\doanTrienKhai\\htqlsv\\storage\\app/private',
+        'root' => 'C:\\Users\\admin\\htqlsv\\storage\\app/private',
         'serve' => true,
         'throw' => false,
         'report' => false,
@@ -345,7 +345,7 @@
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\doAnTrienkhai\\doanTrienKhai\\htqlsv\\storage\\app/public',
+        'root' => 'C:\\Users\\admin\\htqlsv\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -367,7 +367,7 @@
     ),
     'links' => 
     array (
-      'C:\\doAnTrienkhai\\doanTrienKhai\\htqlsv\\public\\storage' => 'C:\\doAnTrienkhai\\doanTrienKhai\\htqlsv\\storage\\app/public',
+      'C:\\Users\\admin\\htqlsv\\public\\storage' => 'C:\\Users\\admin\\htqlsv\\storage\\app/public',
     ),
   ),
   'logging' => 
@@ -385,21 +385,21 @@
         'driver' => 'stack',
         'channels' => 
         array (
-          0 => 'env_copyK',
+          0 => 'single',
         ),
         'ignore_exceptions' => false,
       ),
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\doAnTrienkhai\\doanTrienKhai\\htqlsv\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\admin\\htqlsv\\storage\\logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\doAnTrienkhai\\doanTrienKhai\\htqlsv\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\admin\\htqlsv\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -464,7 +464,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\doAnTrienkhai\\doanTrienKhai\\htqlsv\\storage\\logs/laravel.log',
+        'path' => 'C:\\Users\\admin\\htqlsv\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -540,7 +540,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\doAnTrienkhai\\doanTrienKhai\\htqlsv\\resources\\views/vendor/mail',
+        0 => 'C:\\Users\\admin\\htqlsv\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -635,7 +635,7 @@
     'lifetime' => 120,
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\doAnTrienkhai\\doanTrienKhai\\htqlsv\\storage\\framework/sessions',
+    'files' => 'C:\\Users\\admin\\htqlsv\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -646,7 +646,7 @@
     ),
     'cookie' => 'laravel_session',
     'path' => '/',
-    'domain' => NULL,
+    'domain' => '127.0.0.1',
     'secure' => NULL,
     'http_only' => true,
     'same_site' => 'lax',
@@ -761,9 +761,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\doAnTrienkhai\\doanTrienKhai\\htqlsv\\resources\\views',
+      0 => 'C:\\Users\\admin\\htqlsv\\resources\\views',
     ),
-    'compiled' => 'C:\\doAnTrienkhai\\doanTrienKhai\\htqlsv\\storage\\framework\\views',
+    'compiled' => 'C:\\Users\\admin\\htqlsv\\storage\\framework\\views',
   ),
   'tinker' => 
   array (
