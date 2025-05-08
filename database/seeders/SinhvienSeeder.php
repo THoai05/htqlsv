@@ -12,7 +12,9 @@ class SinhvienSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        DB::table('sinhvien')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        \App\Models\Sinhvien::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         foreach (range(13, 100) as $userId) {
             Sinhvien::create([

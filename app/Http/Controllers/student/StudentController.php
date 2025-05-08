@@ -7,6 +7,8 @@ use App\Models\LopHocPhan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Models\PhongHoc;
+
 
 class StudentController extends Controller
 {
@@ -40,6 +42,44 @@ class StudentController extends Controller
 
         // Trả về view hiển thị điểm của sinh viên
         return view('student.diem', compact('diem', 'lophoc_ID', 'sinhvien_ID', 'lophocphan'));
+    }
+    public function lichHoc()
+    {
+        // Lấy thông tin sinh viên hiện tại
+        $sinhvien = Auth::user()->sinhvien;
 
+        // Lấy danh sách các lớp học phần mà sinh viên đã đăng ký
+        $lopHocPhans = $sinhvien->lopHocPhans;
+
+        // Tạo mảng để lưu lịch học
+        $lichHoc = [];
+
+        // Lọc theo phòng học và ngày học
+        foreach ($lopHocPhans as $lopHocPhan) {
+            // Lấy thông tin môn học, giảng viên và phòng học
+            $monhoc = $lopHocPhan->monhoc;
+            $giangvien = $lopHocPhan->giangvien;
+            $phonghoc = $lopHocPhan->phonghoc;
+
+            // Phân loại theo phòng học và ngày học
+            $ngayhocArr = explode(',', $lopHocPhan->ngayhoc);
+            foreach ($ngayhocArr as $ngayhocTV) {
+                $ngayhocTV = trim($ngayhocTV);
+
+                // Chỉ xử lý nếu ngày học hợp lệ
+                if (in_array($ngayhocTV, ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'])) {
+                    // Lưu thông tin vào mảng lichHoc
+                    $lichHoc[$phonghoc->tenphonghoc][$ngayhocTV][] = [
+                        'class' => $lopHocPhan->tenlop,
+                        'monhoc' => $monhoc->ten_mon_hoc,
+                        'sotinchi' => $monhoc->so_tin_chi,
+                        'giangvien' => $giangvien->ho_ten,
+                        'time' => 'Tiết ' . $lopHocPhan->tietbatdau . ' - ' . $lopHocPhan->tietketthuc,
+                    ];
+                }
+            }
+        }
+
+        return view('student.lichhoc', compact('lichHoc'));
     }
 }

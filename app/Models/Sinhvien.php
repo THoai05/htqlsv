@@ -40,8 +40,4 @@ class Sinhvien extends Model
     {
         return $this->hasMany(DiemDanh::class, 'sinhvien_ID', 'sinhvien_ID');
     }
-
 }
-
-
-

@@ -6,11 +6,14 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
+
 class LopHocPhanSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('LopHocPhan')->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        \App\Models\LopHocPhan::truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $monHocIds = DB::table('mon_hocs')->pluck('id')->toArray();
         $phongHocIds = DB::table('phonghoc')->pluck('phonghoc_ID')->toArray();
