@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->enum('dantoc', ['Kinh', 'Khác'])->default('Kinh'); // Dân tộc
             $table->enum('tongiao', ['Có', 'Không'])->default('Không'); // Tôn giáo
             $table->string('noisinh'); // Nơi sinh
+            $table->string('khoa');
             $table->string('tinhtrang')->default('Còn học'); // Tình trạng
             $table->integer('user_id');
             $table->timestamps();

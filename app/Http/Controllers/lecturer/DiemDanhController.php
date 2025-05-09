@@ -28,7 +28,7 @@ class DiemDanhController extends Controller
             $keyword = $request->search;
             $query->where(function ($q) use ($keyword) {
                 $q->where('mssv', 'like', "%$keyword%")
-                    ->orWhere('hoten', 'like', "%$keyword%");
+                    ->orWhere('hoten', 'like', "%$keyword");
             });
         }
 

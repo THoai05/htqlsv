@@ -13,7 +13,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::QesVDnrUFzkMcHN6',
+            '_route' => 'generated::F8xAmBu3csPuiOzR',
           ),
           1 => NULL,
           2 => 
@@ -33,7 +33,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Re5x97URxaVj2cEg',
+            '_route' => 'generated::qa7SlSyj9x5QshMS',
           ),
           1 => NULL,
           2 => 
@@ -498,10 +498,30 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/student/dangkilophocphan' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'student.dangkilophocphan.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
     ),
     2 => 
     array (
-      0 => '{^(?|/admin/(?|sinhvien/([^/]++)(?|(*:37)|/edit(*:49)|(*:56))|giangviens/([^/]++)(?|(*:86)|/edit(*:98)|(*:105))|monhocs/([^/]++)(?|(*:133)|/edit(*:146)|(*:154))|lichhoc/([^/]++)(?|/edit(*:187)|(*:195))|users/([^/]++)(?|/edit(*:226)|(*:234)))|/lecturer/(?|monhoc/([^/]++)(?|/edit(*:280)|(*:288))|diem/([^/]++)/([^/]++)(?|(*:322))|lophocphan/([^/]++)/(?|sinhvien(*:362)|baocao(*:376)|diemdanh(?|(*:395))))|/st(?|udent/(?|([^/]++)/chitietthongtin(*:445)|diem/([^/]++)/([^/]++)(*:475)|([^/]++)/chinhsuachitietthongtin(*:515)|edit/([^/]++)(*:536))|orage/(.*)(*:555)))/?$}sDu',
+      0 => '{^(?|/admin/(?|sinhvien/([^/]++)(?|(*:37)|/edit(*:49)|(*:56))|giangviens/([^/]++)(?|(*:86)|/edit(*:98)|(*:105))|monhocs/([^/]++)(?|(*:133)|/edit(*:146)|(*:154))|lichhoc/([^/]++)(?|/edit(*:187)|(*:195))|users/([^/]++)(?|/edit(*:226)|(*:234)))|/lecturer/(?|monhoc/([^/]++)(?|/edit(*:280)|(*:288))|diem/([^/]++)/([^/]++)(?|(*:322))|lophocphan/([^/]++)/(?|sinhvien(*:362)|baocao(*:376)|diemdanh(?|(*:395))))|/st(?|udent/(?|([^/]++)/chitietthongtin(*:445)|diem/([^/]++)/([^/]++)(*:475)|([^/]++)/chinhsuachitietthongtin(*:515)|edit/([^/]++)(*:536)|dangkilophocphan/([^/]++)/([^/]++)(*:578))|orage/(.*)(*:597)))/?$}sDu',
     ),
     3 => 
     array (
@@ -1185,7 +1205,30 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      555 => 
+      578 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'student.dangkilophocphan.store',
+          ),
+          1 => 
+          array (
+            0 => 'lophoc_ID',
+            1 => 'sinhvien_ID',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      597 => 
       array (
         0 => 
         array (
@@ -1223,7 +1266,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::QesVDnrUFzkMcHN6' => 
+    'generated::F8xAmBu3csPuiOzR' => 
     array (
       'methods' => 
       array (
@@ -1252,7 +1295,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000004cd0000000000000000";}}',
-        'as' => 'generated::QesVDnrUFzkMcHN6',
+        'as' => 'generated::F8xAmBu3csPuiOzR',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1268,7 +1311,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Re5x97URxaVj2cEg' => 
+    'generated::qa7SlSyj9x5QshMS' => 
     array (
       'methods' => 
       array (
@@ -1290,7 +1333,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Re5x97URxaVj2cEg',
+        'as' => 'generated::qa7SlSyj9x5QshMS',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3342,6 +3385,83 @@ app('router')->setCompiledRoutes(
         'uses' => 'App\\Http\\Controllers\\Student\\StudentController@edit',
         'controller' => 'App\\Http\\Controllers\\Student\\StudentController@edit',
         'as' => 'student.edit.thongtin',
+        'namespace' => NULL,
+        'prefix' => '/student',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'student.dangkilophocphan.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'student/dangkilophocphan',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Student\\StudentController@indexDangKi',
+        'controller' => 'App\\Http\\Controllers\\Student\\StudentController@indexDangKi',
+        'as' => 'student.dangkilophocphan.index',
+        'namespace' => NULL,
+        'prefix' => '/student',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'student.dangkilophocphan.store' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'student/dangkilophocphan/{lophoc_ID}/{sinhvien_ID}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Student\\StudentController@storeDangKi',
+        'controller' => 'App\\Http\\Controllers\\Student\\StudentController@storeDangKi',
+        'as' => 'student.dangkilophocphan.store',
         'namespace' => NULL,
         'prefix' => '/student',
         'where' => 

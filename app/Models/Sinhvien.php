@@ -28,6 +28,7 @@ class Sinhvien extends Model
         'dantoc',        // Thêm dantoc vào fillable
         'tongiao',       // Thêm tongiao vào fillable
         'noisinh',       // Thêm noisinh vào fillable
+        'khoa',
         'tinhtrang'      // Thêm tinhtrang vào fillable
     ];
 

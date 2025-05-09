@@ -2,11 +2,13 @@
 
 @section('content')
     <div class="container">
-        <h2>Các lớp học phần của tôi</h2>
-        <a href="{{ route('student.dangkilophocphan.index') }}"
-            class="btn btn-danger btn-lg fw-bold shadow px-4 py-2 my-4 rounded-pill ">
-            🔥 Đăng ký học phần
-        </a>
+        <h2>Các lớp học phần đăng kí</h2>
+        @if (session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
         <table class="table table-bordered table-striped">
             <thead class="table-primary">
                 <tr>
@@ -32,12 +34,17 @@
                             <td>{{ $lop->tietbatdau }}</td>
                             <td>{{ $lop->tietketthuc }}</td>
                             <td>
-                                <a href="{{ route('student.diem.show', ['lophoc_ID' => $lop->lophoc_ID, 'sinhvien_ID' => $sinhvien->sinhvien_ID]) }}"
-                                    class="btn btn-info btn-sm" style="display: inline-flex; align-items: center;">
-                                    <img src="{{ asset('images/find.png') }}"
-                                        style="width: 20px; height: 20px; margin-right: 5px;" />
-                                    Xem Điểm
-                                </a>
+                                <form
+                                    action="{{ route('student.dangkilophocphan.store', ['lophoc_ID' => $lop->lophoc_ID, 'sinhvien_ID' => $sinhvien->sinhvien_ID]) }}"
+                                    method="POST" style="display: inline;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-info btn-sm"
+                                        style="display: inline-flex; align-items: center;">
+                                        <img src="{{ asset('images/find.png') }}"
+                                            style="width: 20px; height: 20px; margin-right: 5px;" />
+                                        Đăng kí
+                                    </button>
+                                </form>
 
                             </td>
                         </tr>

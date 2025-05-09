@@ -33,6 +33,7 @@ class SinhvienSeeder extends Seeder
                 'dantoc' => $faker->randomElement(['Kinh', 'Khác']),
                 'tongiao' => $faker->randomElement(['Có', 'Không']),
                 'noisinh' => $faker->randomElement($noisinh),
+                'khoa' => $faker->randomElement(['CNTT', 'QTKD', 'Ngoại ngữ', 'Toán']),
                 'tinhtrang' => 'Còn học',
                 'user_id' => $userId,
             ]);
