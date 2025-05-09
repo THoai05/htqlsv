@@ -46,13 +46,27 @@ class StudentController extends Controller
         if ($exists) {
             return back()->with('error', 'Bạn đã đăng ký lớp học này rồi!');
         }
+        $lophocphan = LopHocPhan::where('lophoc_ID', $lophoc_ID)->first();
+        if ($lophocphan->soluongsv >= 40) {
+            return back()->with('error1', 'Lớp đã đủ số lượng');
+        }
 
         LopSinhVien::create([
             'lophoc_ID' => $lophoc_ID,
             'sinhvien_ID' => $sinhvien_ID
         ]);
+        LopHocPhan::where('lophoc_ID', $lophoc_ID)->increment('soluongsv');
 
         return redirect()->route('student.dangkilophocphan.index')->with('success', 'Đăng kí môn học thành công.');
+    }
+
+    public function deleteHocPhan($lophoc_ID, $sinhvien_ID)
+    {
+        LopSinhVien::where('lophoc_ID', $lophoc_ID)
+            ->where('sinhvien_ID', $sinhvien_ID)
+            ->delete();
+
+        return back()->with('success1', 'Đã xóa lớp học phần thành công');
     }
 
     public function chiTietThongTin()

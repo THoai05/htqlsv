@@ -13,7 +13,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::F8xAmBu3csPuiOzR',
+            '_route' => 'generated::v6rblU0cBcRvrnnE',
           ),
           1 => NULL,
           2 => 
@@ -33,7 +33,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::qa7SlSyj9x5QshMS',
+            '_route' => 'generated::dz9AP7rxUlLqGcvK',
           ),
           1 => NULL,
           2 => 
@@ -521,7 +521,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/admin/(?|sinhvien/([^/]++)(?|(*:37)|/edit(*:49)|(*:56))|giangviens/([^/]++)(?|(*:86)|/edit(*:98)|(*:105))|monhocs/([^/]++)(?|(*:133)|/edit(*:146)|(*:154))|lichhoc/([^/]++)(?|/edit(*:187)|(*:195))|users/([^/]++)(?|/edit(*:226)|(*:234)))|/lecturer/(?|monhoc/([^/]++)(?|/edit(*:280)|(*:288))|diem/([^/]++)/([^/]++)(?|(*:322))|lophocphan/([^/]++)/(?|sinhvien(*:362)|baocao(*:376)|diemdanh(?|(*:395))))|/st(?|udent/(?|([^/]++)/chitietthongtin(*:445)|diem/([^/]++)/([^/]++)(*:475)|([^/]++)/chinhsuachitietthongtin(*:515)|edit/([^/]++)(*:536)|dangkilophocphan/([^/]++)/([^/]++)(*:578))|orage/(.*)(*:597)))/?$}sDu',
+      0 => '{^(?|/admin/(?|sinhvien/([^/]++)(?|(*:37)|/edit(*:49)|(*:56))|giangviens/([^/]++)(?|(*:86)|/edit(*:98)|(*:105))|monhocs/([^/]++)(?|(*:133)|/edit(*:146)|(*:154))|lichhoc/([^/]++)(?|/edit(*:187)|(*:195))|users/([^/]++)(?|/edit(*:226)|(*:234)))|/lecturer/(?|monhoc/([^/]++)(?|/edit(*:280)|(*:288))|diem/([^/]++)/([^/]++)(?|(*:322))|lophocphan/([^/]++)/(?|sinhvien(*:362)|baocao(*:376)|diemdanh(?|(*:395))))|/st(?|udent/(?|([^/]++)/chitietthongtin(*:445)|diem/([^/]++)/([^/]++)(*:475)|([^/]++)/chinhsuachitietthongtin(*:515)|edit/([^/]++)(*:536)|dangkilophocphan/([^/]++)/([^/]++)(*:578)|xoalophocphan/([^/]++)/([^/]++)(*:617))|orage/(.*)(*:636)))/?$}sDu',
     ),
     3 => 
     array (
@@ -1228,7 +1228,30 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      597 => 
+      617 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'student.hocphan.delete',
+          ),
+          1 => 
+          array (
+            0 => 'lophoc_ID',
+            1 => 'sinhvien_ID',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      636 => 
       array (
         0 => 
         array (
@@ -1266,7 +1289,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::F8xAmBu3csPuiOzR' => 
+    'generated::v6rblU0cBcRvrnnE' => 
     array (
       'methods' => 
       array (
@@ -1295,7 +1318,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000004cd0000000000000000";}}',
-        'as' => 'generated::F8xAmBu3csPuiOzR',
+        'as' => 'generated::v6rblU0cBcRvrnnE',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1311,7 +1334,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::qa7SlSyj9x5QshMS' => 
+    'generated::dz9AP7rxUlLqGcvK' => 
     array (
       'methods' => 
       array (
@@ -1333,7 +1356,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::qa7SlSyj9x5QshMS',
+        'as' => 'generated::dz9AP7rxUlLqGcvK',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1362,6 +1385,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.sinhvien.index',
         'uses' => 'App\\Http\\Controllers\\Admin\\SinhvienController@index',
@@ -1399,6 +1424,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.sinhvien.create',
         'uses' => 'App\\Http\\Controllers\\Admin\\SinhvienController@create',
@@ -1435,6 +1462,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.sinhvien.store',
         'uses' => 'App\\Http\\Controllers\\Admin\\SinhvienController@store',
@@ -1472,6 +1501,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.sinhvien.show',
         'uses' => 'App\\Http\\Controllers\\Admin\\SinhvienController@show',
@@ -1509,6 +1540,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.sinhvien.edit',
         'uses' => 'App\\Http\\Controllers\\Admin\\SinhvienController@edit',
@@ -1546,6 +1579,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.sinhvien.update',
         'uses' => 'App\\Http\\Controllers\\Admin\\SinhvienController@update',
@@ -1582,6 +1617,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.sinhvien.destroy',
         'uses' => 'App\\Http\\Controllers\\Admin\\SinhvienController@destroy',
@@ -1619,6 +1656,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.giangviens.index',
         'uses' => 'App\\Http\\Controllers\\Admin\\GiangVienController@index',
@@ -1656,6 +1695,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.giangviens.create',
         'uses' => 'App\\Http\\Controllers\\Admin\\GiangVienController@create',
@@ -1692,6 +1733,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.giangviens.store',
         'uses' => 'App\\Http\\Controllers\\Admin\\GiangVienController@store',
@@ -1729,6 +1772,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.giangviens.show',
         'uses' => 'App\\Http\\Controllers\\Admin\\GiangVienController@show',
@@ -1766,6 +1811,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.giangviens.edit',
         'uses' => 'App\\Http\\Controllers\\Admin\\GiangVienController@edit',
@@ -1803,6 +1850,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.giangviens.update',
         'uses' => 'App\\Http\\Controllers\\Admin\\GiangVienController@update',
@@ -1839,6 +1888,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.giangviens.destroy',
         'uses' => 'App\\Http\\Controllers\\Admin\\GiangVienController@destroy',
@@ -1876,6 +1927,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.monhocs.index',
         'uses' => 'App\\Http\\Controllers\\Admin\\MonHocController@index',
@@ -1913,6 +1966,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.monhocs.create',
         'uses' => 'App\\Http\\Controllers\\Admin\\MonHocController@create',
@@ -1949,6 +2004,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.monhocs.store',
         'uses' => 'App\\Http\\Controllers\\Admin\\MonHocController@store',
@@ -1986,6 +2043,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.monhocs.show',
         'uses' => 'App\\Http\\Controllers\\Admin\\MonHocController@show',
@@ -2023,6 +2082,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.monhocs.edit',
         'uses' => 'App\\Http\\Controllers\\Admin\\MonHocController@edit',
@@ -2060,6 +2121,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.monhocs.update',
         'uses' => 'App\\Http\\Controllers\\Admin\\MonHocController@update',
@@ -2096,6 +2159,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'as' => 'admin.monhocs.destroy',
         'uses' => 'App\\Http\\Controllers\\Admin\\MonHocController@destroy',
@@ -2133,6 +2198,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\LichHocController@index',
         'controller' => 'App\\Http\\Controllers\\Admin\\LichHocController@index',
@@ -2170,6 +2237,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\LichHocController@create',
         'controller' => 'App\\Http\\Controllers\\Admin\\LichHocController@create',
@@ -2206,6 +2275,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\LichHocController@store',
         'controller' => 'App\\Http\\Controllers\\Admin\\LichHocController@store',
@@ -2243,6 +2314,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\LichHocController@edit',
         'controller' => 'App\\Http\\Controllers\\Admin\\LichHocController@edit',
@@ -2279,6 +2352,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\LichHocController@update',
         'controller' => 'App\\Http\\Controllers\\Admin\\LichHocController@update',
@@ -2315,6 +2390,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\LichHocController@destroy',
         'controller' => 'App\\Http\\Controllers\\Admin\\LichHocController@destroy',
@@ -2352,6 +2429,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\UsersController@index',
         'controller' => 'App\\Http\\Controllers\\Admin\\UsersController@index',
@@ -2389,6 +2468,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\UsersController@create',
         'controller' => 'App\\Http\\Controllers\\Admin\\UsersController@create',
@@ -2425,6 +2506,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\UsersController@store',
         'controller' => 'App\\Http\\Controllers\\Admin\\UsersController@store',
@@ -2462,6 +2545,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\UsersController@edit',
         'controller' => 'App\\Http\\Controllers\\Admin\\UsersController@edit',
@@ -2498,6 +2583,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\UsersController@update',
         'controller' => 'App\\Http\\Controllers\\Admin\\UsersController@update',
@@ -2534,6 +2621,8 @@ app('router')->setCompiledRoutes(
         'middleware' => 
         array (
           0 => 'web',
+          1 => 'web',
+          2 => 'auth',
         ),
         'uses' => 'App\\Http\\Controllers\\Admin\\UsersController@destroy',
         'controller' => 'App\\Http\\Controllers\\Admin\\UsersController@destroy',
@@ -3462,6 +3551,44 @@ app('router')->setCompiledRoutes(
         'uses' => 'App\\Http\\Controllers\\Student\\StudentController@storeDangKi',
         'controller' => 'App\\Http\\Controllers\\Student\\StudentController@storeDangKi',
         'as' => 'student.dangkilophocphan.store',
+        'namespace' => NULL,
+        'prefix' => '/student',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'student.hocphan.delete' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'student/xoalophocphan/{lophoc_ID}/{sinhvien_ID}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\Student\\StudentController@deleteHocPhan',
+        'controller' => 'App\\Http\\Controllers\\Student\\StudentController@deleteHocPhan',
+        'as' => 'student.hocphan.delete',
         'namespace' => NULL,
         'prefix' => '/student',
         'where' => 

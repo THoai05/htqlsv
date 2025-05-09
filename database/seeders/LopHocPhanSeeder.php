@@ -37,7 +37,7 @@ class LopHocPhanSeeder extends Seeder
                 'mamonhoc' => fake()->randomElement($monHocIds),
                 'phonghoc_ID' => fake()->randomElement($phongHocIds),
                 'giangvien_ID' => fake()->randomElement($giangVienIds),
-                'soluongsv' => fake()->numberBetween(20, 60),
+                'soluongsv' => 0,
                 'thoigianbatdau' => Carbon::now()->addDays(rand(1, 30))->toDateString(),
                 'thoigianketthuc' => Carbon::now()->addDays(rand(60, 100))->toDateString(),
                 'ngayhoc' => fake()->randomElement($ngayHocOptions),
