@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 
 // Group các route thuộc khu vực admin
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['web', 'auth'])->group(function () {
 
     // Route sinh viên (ngoài admin)
     Route::resource('sinhvien', SinhvienController::class);
@@ -88,4 +88,5 @@ Route::prefix('student')->name('student.')->middleware(['web', 'auth'])->group(f
     Route::get('edit/{sinhvienID}', [StudentController::class, 'edit'])->name('edit.thongtin');
     Route::get('dangkilophocphan', [StudentController::class, 'indexDangKi'])->name('dangkilophocphan.index');
     Route::post('dangkilophocphan/{lophoc_ID}/{sinhvien_ID}', [StudentController::class, 'storeDangKi'])->name('dangkilophocphan.store');
+    Route::delete('xoalophocphan/{lophoc_ID}/{sinhvien_ID}', [StudentController::class, 'deleteHocPhan'])->name('hocphan.delete');
 });

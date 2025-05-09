@@ -25,7 +25,6 @@ class LoginController extends Controller
         ]);
         if (Auth::attempt($validated)) {
             $request->session()->regenerate();
-            Auth::login(Auth::user());
             $user = Auth::user();
             if ($user->role === 'admin') {
                 return redirect()->route('admin.users.index');
@@ -46,6 +45,8 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect()->route('login');
     }
 }
