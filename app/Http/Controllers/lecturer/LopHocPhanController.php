@@ -26,7 +26,7 @@ class LopHocPhanController extends Controller
     }
 
     // Hiển thị danh sách sinh viên trong lớp học phần
-    public function showSinhVien($id)
+    public function showSinhVien(Request $request, $id)
     {
         $lophocphan = LopHocPhan::find($id);
 
@@ -34,13 +34,19 @@ class LopHocPhanController extends Controller
             return redirect()->back()->with('error', 'Không tìm thấy lớp học phần');
         }
 
-        $sinhviens = $lophocphan->sinhviens;
+        $search = $request->input('search');
+
+        $query = $lophocphan->sinhviens();
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('mssv', 'like', '%' . $search . '%')
+                    ->orWhere('hoten', 'like', '%' . $search . '%');
+            });
+        }
+
+        $sinhviens = $query->get();
 
         return view('lecturer.sinhvien.sinhvien_list', compact('sinhviens', 'lophocphan'));
     }
-
-
-
-
-
 }
