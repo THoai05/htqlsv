@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Student;
 
 use App\Models\Diem;
 use App\Models\LopHocPhan;
+use App\Models\LopSinhVien;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,35 @@ class StudentController extends Controller
         }
 
         return redirect()->route('login'); // Nếu không tìm thấy giảng viên, chuyển hướng đến trang đăng nhập
+    }
+
+    public function indexDangKi(Request $request)
+    {
+        $sinhvien = Auth::user()->sinhvien;
+        $lophocphans = LopHocPhan::all();
+
+        // Kiểm tra nếu giảng viên tồn tại
+        if ($sinhvien) {
+            return view('student.dangkihocphan', compact('lophocphans', 'sinhvien'));
+        }
+    }
+
+    public function storeDangKi(Request $request, $lophoc_ID, $sinhvien_ID)
+    {
+        $exists = LopSinhVien::where('lophoc_ID', $lophoc_ID)
+            ->where('sinhvien_ID', $sinhvien_ID)
+            ->exists();
+
+        if ($exists) {
+            return back()->with('error', 'Bạn đã đăng ký lớp học này rồi!');
+        }
+
+        LopSinhVien::create([
+            'lophoc_ID' => $lophoc_ID,
+            'sinhvien_ID' => $sinhvien_ID
+        ]);
+
+        return redirect()->route('student.dangkilophocphan.index')->with('success', 'Đăng kí môn học thành công.');
     }
 
     public function chiTietThongTin()

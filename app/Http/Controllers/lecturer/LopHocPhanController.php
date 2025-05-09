@@ -18,7 +18,7 @@ class LopHocPhanController extends Controller
 
         // Kiểm tra nếu giảng viên tồn tại
         if ($giangvien) {
-            $lophocphans = $giangvien->lophocphans()->with(['monhoc', 'phonghoc'])->get();
+            $lophocphans = $giangvien->lophocphans; // Lấy danh sách lớp học phần của giảng viên
             return view('lecturer.sinhvien.lophocphan_list', compact('lophocphans'));
         }
 
@@ -28,50 +28,19 @@ class LopHocPhanController extends Controller
     // Hiển thị danh sách sinh viên trong lớp học phần
     public function showSinhVien($id)
     {
-        // Tìm lớp học phần
         $lophocphan = LopHocPhan::find($id);
 
-        // Kiểm tra nếu không tìm thấy lớp học phần
         if (!$lophocphan) {
             return redirect()->back()->with('error', 'Không tìm thấy lớp học phần');
         }
 
-        // Tạo query để lấy sinh viên từ lớp học phần
-        $query = $lophocphan->sinhviens();
+        $sinhviens = $lophocphan->sinhviens;
 
-        // Kiểm tra nếu có tham số tìm kiếm
-        if ($search = request('search')) {
-            $query->where(function ($q) use ($search) {
-                $q->where('mssv', 'LIKE', "%{$search}%")
-                    ->orWhere('hoten', 'LIKE', "%{$search}%");
-            });
-        }
-
-        // Lấy danh sách sinh viên theo bộ lọc
-        $sinhviens = $query->get();
-
-        // Trả về view với dữ liệu sinh viên và lớp học phần
         return view('lecturer.sinhvien.sinhvien_list', compact('sinhviens', 'lophocphan'));
     }
 
 
 
-    public function showDiemSinhVien($lophoc_ID)
-    {
-        $danhsach = Diem::where('lophoc_ID', $lophoc_ID)
-            ->join('sinhvien', 'diem.sinhvien_ID', '=', 'sinhvien.sinhvien_ID')
-            ->select(
-                'sinhvien.sinhvien_ID as mssv',
-                'sinhvien.hoten',
-                'diem.diem_15p_1',
-                'diem.diem_15p_2',
-                'diem.diem_15p_3',
-                'diem.giua_ki',
-                'diem.cuoi_ki',
-                'diem.diem_tb'
-            )
-            ->get();
 
-        return view('lecturer.sinhvien.baocao_diem', compact('danhsach', 'lophoc_ID'));
-    }
+
 }
