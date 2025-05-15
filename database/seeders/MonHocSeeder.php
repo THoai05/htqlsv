@@ -36,7 +36,7 @@ class MonHocSeeder extends Seeder
                 'Quản lý dự án',
                 'Quản trị rủi ro'
             ],
-            'Ngoại ngữ' => [
+            'Tiếng' => [
                 'Tiếng Anh cơ bản',
                 'Tiếng Anh chuyên ngành',
                 'Tiếng Nhật',
@@ -66,7 +66,7 @@ class MonHocSeeder extends Seeder
         // Tạo 10 môn học giả
         for ($i = 0; $i < 15; $i++) {
             // Chọn khoa ngẫu nhiên
-            $khoa = $faker->randomElement(['CNTT', 'QTKD', 'Ngoại ngữ', 'Toán']);
+            $khoa = $faker->randomElement(['CNTT', 'QTKD', 'Tiếng', 'Toán']);
 
             // Chọn môn học thuộc khoa đó
             $monHoc = $faker->randomElement($monHocsTheoKhoa[$khoa]);

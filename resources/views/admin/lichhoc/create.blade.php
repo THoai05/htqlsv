@@ -4,11 +4,9 @@
     <div class="container">
         <h1>Thêm Lớp Học Phần</h1>
 
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+        @php
+            $khoa = $_GET['khoa'] ?? null;
+        @endphp
 
         <!-- Hiển thị lỗi nếu có -->
         @if($errors->any())
@@ -33,7 +31,9 @@
                 <select name="mamonhoc" id="mamonhoc" class="form-control" required>
                     <option value="">-- Chọn môn học --</option>
                     @foreach($monhocs as $mon)
-                        <option value="{{ $mon->id }}">{{ $mon->ten_mon_hoc }} ({{ $mon->ma_mon_hoc }})</option>
+                        @if ($mon->khoa === $khoa)
+                            <option value="{{ $mon->id }}">{{ $mon->ten_mon_hoc }} ({{ $mon->ma_mon_hoc }})</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
@@ -53,14 +53,16 @@
                 <select name="giangvien_ID" id="giangvien_ID" class="form-control" required>
                     <option value="">-- Chọn giảng viên --</option>
                     @foreach($giangviens as $gv)
-                        <option value="{{ $gv->id }}">{{ $gv->ho_ten }}</option>
+                        @if ($gv->khoa === $khoa)
+                            <option value="{{ $gv->id }}">{{ $gv->ho_ten }}</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="soluongsv">Số Lượng Sinh Viên:</label>
-                <input type="number" name="soluongsv" id="soluongsv" class="form-control" required>
+                <label for="soluongsvtoida">Số lượng sinh viên tối đa:</label>
+                <input type="number" name="soluongsvtoida" id="soluongsvtoida" class="form-control" required>
             </div>
 
             <div class="form-group">

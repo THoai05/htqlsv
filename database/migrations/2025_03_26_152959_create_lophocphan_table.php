@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('giangvien_ID');
 
             // Thông tin lớp học
-            $table->integer('soluongsv');
+            $table->integer('soluongsv')->default(0);
             $table->integer('soluongsvtoida')->default(40);
             $table->date('thoigianbatdau');
             $table->date('thoigianketthuc');

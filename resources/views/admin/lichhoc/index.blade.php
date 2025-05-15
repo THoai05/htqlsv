@@ -4,7 +4,18 @@
     <div class="container">
         <h1>Quản Lý Lịch Học</h1>
         <!-- Nút chuyển đến trang tạo lớp học phần mới -->
-        <a href="{{ route('admin.lichhoc.create') }}" class="btn btn-success mb-3">Thêm Lớp Học Phần</a>
+        <a href="{{ route('admin.lichhoc.create', ['khoa' => 'CNTT']) }}" class="btn btn-primary mb-3">Thêm Lớp Học Phần
+            khoa
+            CNTT</a>
+        <a href="{{ route('admin.lichhoc.create', ['khoa' => 'QTKD']) }}" class="btn btn-danger mb-3">Thêm Lớp Học Phần khoa
+            QTKD</a>
+        <a href="{{ route('admin.lichhoc.create', ['khoa' => 'Tiếng']) }}" class="btn btn-warning text-dark mb-3">Thêm
+            Lớp Học
+            Phần khoa Ngoại
+            ngữ</a>
+        <a href="{{ route('admin.lichhoc.create', ['khoa' => 'Toán']) }}" class="btn btn-info text-white mb-3">Thêm Lớp Học
+            Phần khoa Toán</a>
+
 
         @if(session('success'))
             <div class="alert alert-success">
