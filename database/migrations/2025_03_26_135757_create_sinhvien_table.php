@@ -10,6 +10,7 @@ return new class extends Migration {
         Schema::create('sinhvien', function (Blueprint $table) {
             $table->id('sinhvien_ID'); // Khóa chính
             $table->string('hoten');
+            $table->string('khoa');
             $table->string('mssv', 50)->unique();  // Giới hạn độ dài
             $table->string('email', 100)->unique();
             $table->string('sdt', 50)->unique();
@@ -19,7 +20,6 @@ return new class extends Migration {
             $table->enum('dantoc', ['Kinh', 'Khác'])->default('Kinh'); // Dân tộc
             $table->enum('tongiao', ['Có', 'Không'])->default('Không'); // Tôn giáo
             $table->string('noisinh'); // Nơi sinh
-            $table->string('khoa');
             $table->string('tinhtrang')->default('Còn học'); // Tình trạng
             $table->integer('user_id');
             $table->timestamps();
