@@ -18,6 +18,7 @@ return new class extends Migration {
 
             // Thông tin lớp học
             $table->integer('soluongsv');
+            $table->integer('soluongsvtoida')->default(40);
             $table->date('thoigianbatdau');
             $table->date('thoigianketthuc');
             $table->string('ngayhoc', 50); // VD: "Thứ 2, Thứ 3"

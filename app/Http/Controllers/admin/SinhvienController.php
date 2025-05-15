@@ -26,17 +26,17 @@ class SinhvienController extends Controller
     {
         // Validate dữ liệu sinh viên
         $request->validate([
-            'hoten'     => 'required|string|max:255',
-            'mssv'      => 'required|string|max:50|unique:sinhvien,mssv',
-            'khoa'      => 'required|string|max:50|unique:sinhvien,khoa',
-            'email'     => 'required|email|max:100|unique:sinhvien,email',
-            'sdt'       => 'required|string|max:15|unique:sinhvien,sdt',
-            'cccd'      => 'nullable|string|max:20',
-            'ngaysinh'  => 'nullable|date',
-            'gioitinh'  => 'nullable|in:Nam,Nữ',
-            'dantoc'    => 'nullable|string|max:100',
-            'tongiao'   => 'nullable|string|max:100',
-            'noisinh'   => 'nullable|string|max:255',
+            'hoten' => 'required|string|max:255',
+            'mssv' => 'required|string|max:50|unique:sinhvien,mssv',
+            'khoa' => 'required',
+            'email' => 'required|email|max:100|unique:sinhvien,email',
+            'sdt' => 'required|string|max:15|unique:sinhvien,sdt',
+            'cccd' => 'nullable|string|max:20',
+            'ngaysinh' => 'nullable|date',
+            'gioitinh' => 'nullable|in:Nam,Nữ',
+            'dantoc' => 'nullable|string|max:100',
+            'tongiao' => 'nullable|string|max:100',
+            'noisinh' => 'nullable|string|max:255',
             'tinhtrang' => 'nullable|string|max:100',
         ]);
 
@@ -58,7 +58,7 @@ class SinhvienController extends Controller
         $user = User::create([
             'username' => $newUsername,
             'password' => Hash::make('123456'),
-            'role'     => 'sinhvien',
+            'role' => 'sinhvien',
         ]);
 
         // Tạo sinh viên

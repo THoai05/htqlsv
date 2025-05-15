@@ -17,6 +17,7 @@ class LopHocPhan extends Model
         'phonghoc_ID',
         'giangvien_ID',
         'soluongsv',
+        'soluongsvtoida',
         'thoigianbatdau',
         'thoigianketthuc',
         'ngayhoc',
