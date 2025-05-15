@@ -26,7 +26,7 @@ class GiangVienSeeder extends Seeder
             GiangVien::create([
                 'ho_ten' => $hoTenVietNam,
                 'ma_giang_vien' => 'GV' . str_pad($userId, 4, '0', STR_PAD_LEFT),
-                'khoa' => $faker->randomElement(['CNTT', 'QTKD', 'Ngoại ngữ', 'Toán']),
+                'khoa' => $faker->randomElement(['CNTT', 'QTKD', 'Tiếng', 'Toán']),
                 'email' => $faker->unique()->safeEmail,
                 'so_dien_thoai' => $faker->numerify('09########'),
                 'user_id' => $userId,
