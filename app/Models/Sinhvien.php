@@ -20,6 +20,7 @@ class Sinhvien extends Model
     protected $fillable = [
         'hoten',
         'mssv',
+        'khoa',
         'email',
         'sdt',
         'cccd',         // Thêm cccd vào fillable
@@ -29,7 +30,8 @@ class Sinhvien extends Model
         'tongiao',       // Thêm tongiao vào fillable
         'noisinh',       // Thêm noisinh vào fillable
         'khoa',
-        'tinhtrang'      // Thêm tinhtrang vào fillable
+        'tinhtrang',
+        'user_id'      // Thêm tinhtrang vào fillable
     ];
 
     public function lopHocPhans()
