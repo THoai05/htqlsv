@@ -62,7 +62,7 @@
                             <td>{{ $lop->ngayhoc }}</td>
                             <td>{{ $lop->tietbatdau }}</td>
                             <td>{{ $lop->tietketthuc }}</td>
-                            <td>{{ $lop->soluongsv }}/40</td>
+                            <td>{{ $lop->soluongsv }}/{{ $lop->soluongsvtoida }}</td>
                             <td>
                                 <form class="form-dangky"
                                     action="{{ route('student.dangkilophocphan.store', ['lophoc_ID' => $lop->lophoc_ID, 'sinhvien_ID' => $sinhvien->sinhvien_ID]) }}"

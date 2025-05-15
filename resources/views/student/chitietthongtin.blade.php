@@ -3,6 +3,9 @@
 @section('content')
     <div class="container mt-5">
         <h2 class="text-center mb-4">Chi tiết thông tin sinh viên</h2>
+        @if (session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
 
         <div class="card shadow-lg rounded-lg border-0">
             <div class="card-body">

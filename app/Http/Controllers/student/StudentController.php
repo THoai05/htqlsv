@@ -47,7 +47,7 @@ class StudentController extends Controller
             return back()->with('error', 'Bạn đã đăng ký lớp học này rồi!');
         }
         $lophocphan = LopHocPhan::where('lophoc_ID', $lophoc_ID)->first();
-        if ($lophocphan->soluongsv >= 40) {
+        if ($lophocphan->soluongsv >= $lophocphan->soluongsvtoida) {
             return back()->with('error1', 'Lớp đã đủ số lượng');
         }
 
