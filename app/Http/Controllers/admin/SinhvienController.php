@@ -28,7 +28,7 @@ class SinhvienController extends Controller
         $request->validate([
             'hoten'     => 'required|string|max:255',
             'mssv'      => 'required|string|max:50|unique:sinhvien,mssv',
-            'khoa'      => 'required|string|max:50|unique:sinhvien,khoa',
+            'khoa'      => 'required|string|max:50',
             'email'     => 'required|email|max:100|unique:sinhvien,email',
             'sdt'       => 'required|string|max:15|unique:sinhvien,sdt',
             'cccd'      => 'nullable|string|max:20',

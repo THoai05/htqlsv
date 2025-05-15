@@ -18,6 +18,10 @@
             <label class="form-label">Số Tín Chỉ</label>
             <input type="number" name="so_tin_chi" class="form-control" required>
         </div>
+        <div class="mb-3">
+            <label class="form-label">Khoa</label>
+            <input type="number" name="so_tin_chi" class="form-control" required>
+        </div>
         <button type="submit" class="btn btn-success">Lưu</button>
         <a href="{{ route('admin.monhocs.index') }}" class="btn btn-secondary">Hủy</a>
     </form>

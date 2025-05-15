@@ -34,7 +34,7 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Giảng viên</label>
+            <label class="form-label">Khoa</label>
             <select name="giang_vien_id" class="form-control" required>
                 @foreach($giangviens as $giangvien)
                 <option value="{{ $giangvien->id }}" {{ $monhoc->giang_vien_id == $giangvien->id ? 'selected' : '' }}>
