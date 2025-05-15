@@ -24,11 +24,11 @@ class MonHocController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'ten_mon_hoc' => 'required|string|max:255',
-            'ma_mon_hoc' => 'required|string|unique:mon_hocs,ma_mon_hoc',
-            'so_tin_chi' => 'required|integer|min:1',
-            'giang_vien_id' => 'nullable|exists:giang_viens,id',
-            'mo_ta' => 'nullable|string',
+            'ma_mon_hoc' => 'required|unique:mon_hocs,ma_mon_hoc,',
+            'ten_mon_hoc' => 'required',
+            'so_tin_chi' => 'required|integer',
+            'mo_ta' => 'required',
+            'khoa' => 'required|in:CNTT,Ngoại ngữ,Toán,QTKD'
         ]);
 
         MonHoc::create($request->all());
@@ -53,7 +53,8 @@ class MonHocController extends Controller
             'ma_mon_hoc' => 'required|unique:mon_hocs,ma_mon_hoc,' . $id,
             'ten_mon_hoc' => 'required',
             'so_tin_chi' => 'required|integer',
-            'giang_vien_id' => 'required|exists:giang_viens,id',
+            'mota',
+            'khoa' => 'required|in:CNTT,Ngoại ngữ,Toán,QTKD'
         ]);
 
         $monhoc->update($request->all());
