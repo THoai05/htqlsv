@@ -75,7 +75,6 @@ class MonHocSeeder extends Seeder
                 'ten_mon_hoc' => $monHoc, // Tên môn học
                 'ma_mon_hoc' => 'MH' . str_pad($i + 1, 4, '0', STR_PAD_LEFT), // Mã môn học
                 'so_tin_chi' => $faker->numberBetween(2, 4), // Số tín chỉ
-                'giang_vien_id' => $faker->randomElement($giangViens), // Giảng viên
                 'mo_ta' => $faker->sentence, // Mô tả môn học
                 'khoa' => $khoa, // Khoa
                 'created_at' => now(),

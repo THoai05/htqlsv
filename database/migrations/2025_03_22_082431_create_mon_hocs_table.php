@@ -12,7 +12,6 @@ return new class extends Migration {
             $table->string('ten_mon_hoc');
             $table->string('ma_mon_hoc')->unique();
             $table->integer('so_tin_chi');
-            $table->unsignedBigInteger('giang_vien_id'); // Thay đổi thành không nullable
             $table->text('mo_ta')->nullable();
             $table->string('khoa');
             $table->timestamps();

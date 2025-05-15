@@ -19,7 +19,8 @@ class MonHoc extends Model
         'ma_mon_hoc',
         'so_tin_chi',
         'giang_vien_id',
-        'mota'
+        'mota',
+        'khoa',
     ];
 
     public function giangvien()

@@ -45,7 +45,7 @@ class LopHocPhan extends Model
     // Liên kết với bảng SinhVien (many-to-many)
     public function sinhviens()
     {
-        return $this->belongsToMany(SinhVien::class, 'lop_sinhvien', 'lophoc_ID', 'sinhvien_ID');
+        return $this->belongsToMany(Sinhvien::class, 'lop_sinhvien', 'lophoc_ID', 'sinhvien_ID');
     }
 
     public function diem()
